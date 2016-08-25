@@ -1,10 +1,8 @@
 (require 'package)
 (package-initialize)
 (add-to-list 'package-archives
-             '("melpa-stable" . "https://melpa.org/packages/") t)
+             '("melpa" . "https://melpa.org/packages/") t)
 
-(add-to-list 'package-archives
-  '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
 (or (package-installed-p 'use-package)
