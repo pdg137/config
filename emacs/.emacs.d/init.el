@@ -39,9 +39,6 @@
   :init
   (setq ergoemacs-keyboard-layout "us")
   (setq ergoemacs-theme-options (quote ((save-options-on-exit off))))
-  (setq ergoemacs-ignore-prev-global t)
-  (add-hook 'emacs-startup-hook #'my-ergoemacs-customizations)
-  (add-hook 'isearch-mode-hook #'my-isearch-customizations)
   )
 
 (use-package color-theme-sanityinc-solarized
@@ -128,7 +125,8 @@
 (load custom-file)
 
 ;(define-key dired-mode-map (kbd "C-O") 'find-file)
-(defun my-ergoemacs-customizations ()
+(ergoemacs-component my-ergoemacs-keys ()
+  "My ergoemacs keys"
   (global-set-key (kbd "C-z") #'undo)
   (global-set-key (kbd "M-<up>") #'capitalize-word)
   (global-set-key (kbd "S-M-<up>") #'upcase-word)
@@ -147,15 +145,5 @@
   (global-set-key (kbd "M-~") #'sign-with-timestamp)
 
   (global-set-key (kbd "S-C-s") #'write-file)
-  (message "Loaded Ergoemacs-mode customizations.")
 )
-
-(defun my-isearch-customizations ()
-  (define-key isearch-mode-map (kbd "S-C-f") #'isearch-repeat-backward)
-  (define-key isearch-mode-map (kbd "M-:") #'isearch-repeat-backward)
-  (define-key isearch-mode-map (kbd "M-;") #'isearch-repeat-forward)
-  (message "Loaded isearch-mode customizations.")
-
-  ; the following doesn't actually do anything with ergoemacs-mode
-  (remove-hook 'isearch-mode-hook #'my-isearch-customizations)
-)
+(ergoemacs-require 'my-ergoemacs-keys)
