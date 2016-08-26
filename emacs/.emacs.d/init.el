@@ -30,6 +30,13 @@
 
 (setq js-indent-level 2)
 
+; brings awesome bash tab completion to emacs shell-mode
+(use-package bash-completion
+  :ensure t
+  :config
+  (bash-completion-setup)
+  )
+
 (use-package ergoemacs-mode
   :ensure t
   :init
