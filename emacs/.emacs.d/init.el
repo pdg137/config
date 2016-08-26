@@ -57,10 +57,6 @@
   (global-set-key (kbd "M-[") #'er/contract-region)
   )
 
-; mousewheel and C-+ C-- scrolling
-(global-set-key [C-mouse-4] #'text-scale-increase)
-(global-set-key [C-mouse-5] #'text-scale-decrease)
-
 (add-to-list 'auto-mode-alist '("\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 
@@ -126,8 +122,9 @@
   (global-set-key (kbd "M-;") #'isearch-forward)
   (global-set-key (kbd "M-:") #'isearch-backward)
   (global-set-key (kbd "S-C-f") #'isearch-backward)
-  (global-set-key (kbd "M-<backspace>") #'backward-kill-word)
   (global-set-key (kbd "C-SPC") #'set-mark-command)
+
+  (global-set-key (kbd "C-x C-k") #'ergoemacs-close-current-buffer)
 
   (global-set-key (kbd "M-}") #'mc/mark-next-like-this)
   (global-set-key (kbd "M-{") #'mc/mark-previous-like-this)
@@ -137,3 +134,31 @@
   (global-set-key (kbd "S-C-s") #'write-file)
 )
 (ergoemacs-require 'my-ergoemacs-keys)
+
+; mousewheel and C-+ C-- scrolling
+(defun scale-to (f)
+  (set-face-attribute 'default nil :height
+                      (round f)
+                      ))
+
+(defun scale-by (f)
+  (scale-to (* f (face-attribute 'default :height)))
+  )
+
+(defun scale-up () (interactive)
+  (scale-by 1.1))
+
+(defun scale-down () (interactive)
+  (scale-by (/ 1 1.1)))
+
+(defun scale-reset () (interactive)
+  (scale-to 200))
+
+;; These shortcuts don't work as an ergoemacs component, but they work
+;; here.  Unforunately it seems like repeated scrolling "clicks" don't
+;; work correctly, so you can only scroll by one step at a time.
+(global-set-key (kbd "C-=") #'scale-up)
+(global-set-key (kbd "C--") #'scale-down)
+(global-set-key (kbd "C-0") #'scale-reset)
+(global-set-key [C-mouse-4] #'scale-up)
+(global-set-key [C-mouse-5] #'scale-down)
