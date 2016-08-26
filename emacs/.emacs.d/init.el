@@ -18,9 +18,6 @@
  '(haml-mode sass-mode clojure-mode))
 
 (menu-bar-mode 0)
-(display-time-mode 1)
-
-(global-whitespace-mode)
 
 ; Don't split horizontally
 (setq split-height-threshold nil)
@@ -57,12 +54,6 @@
   :config
   (global-set-key (kbd "M-]") #'er/expand-region)
   (global-set-key (kbd "M-[") #'er/contract-region)
-  )
-
-; some things that only work under a window system
-(when (not (eq window-system nil))
-  (set-face-attribute 'default nil :font "Source Code Pro-20")
-  (tool-bar-mode 0)
   )
 
 ; mousewheel and C-+ C-- scrolling
@@ -121,6 +112,12 @@
 
 (setq custom-file (expand-file-name "custom_file" user-emacs-directory))
 (load custom-file)
+
+; some things that only work under a window system
+; setting the font has to happen after loading the custom file (no idea why)
+(when (not (eq window-system nil))
+  (set-face-attribute 'default nil :font "Source Code Pro-20")
+  )
 
 ;(define-key dired-mode-map (kbd "C-O") 'find-file)
 (ergoemacs-component my-ergoemacs-keys ()
