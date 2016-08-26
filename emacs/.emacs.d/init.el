@@ -5,7 +5,8 @@
 
 (package-initialize)
 
-(or (package-installed-p 'use-package)
+(when (not (package-installed-p 'use-package))
+    (package-refresh-contents)
     (package-install 'use-package))
 
 (eval-when-compile
