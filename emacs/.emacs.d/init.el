@@ -110,14 +110,8 @@
   (set-variable 'shell-file-name "bash")
   )
 
-(setq custom-file (expand-file-name "custom_file" user-emacs-directory))
+(setq custom-file (expand-file-name "custom_file.el" user-emacs-directory))
 (load custom-file)
-
-; some things that only work under a window system
-; setting the font has to happen after loading the custom file (no idea why)
-(when (not (eq window-system nil))
-  (set-face-attribute 'default nil :font "Source Code Pro-20")
-  )
 
 ;(define-key dired-mode-map (kbd "C-O") 'find-file)
 (ergoemacs-component my-ergoemacs-keys ()
