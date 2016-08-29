@@ -64,6 +64,13 @@
   (global-set-key (kbd "M-[") #'er/contract-region)
   )
 
+(add-hook 'shell-mode-hook #'ansi-color-for-comint-mode-on)
+(add-to-list 'comint-output-filter-functions #'ansi-color-process-output)
+
+;; This is supposed to allow PS1 to have custom colors, but it doesn't work.
+;;(set-face-attribute 'comint-highlight-prompt nil
+;;                    :inherit nil)
+
 (add-to-list 'auto-mode-alist '("\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 
@@ -132,6 +139,7 @@
   (global-set-key (kbd "C-SPC") #'set-mark-command)
 
   (global-set-key (kbd "C-x C-k") #'ergoemacs-close-current-buffer)
+  (global-set-key (kbd "C-x k") #'kill-buffer)
 
   (global-set-key (kbd "M-}") #'mc/mark-next-like-this)
   (global-set-key (kbd "M-{") #'mc/mark-previous-like-this)
