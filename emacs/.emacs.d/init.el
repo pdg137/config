@@ -37,6 +37,10 @@
   (bash-completion-setup)
   )
 
+(use-package magit
+  :ensure t
+  )
+
 (use-package ergoemacs-mode
   :ensure t
   :init
