@@ -64,8 +64,8 @@
 (use-package expand-region
   :ensure t
   :config
-  (global-set-key (kbd "M-]") #'er/expand-region)
-  (global-set-key (kbd "M-[") #'er/contract-region)
+  (global-set-key (kbd "M-S-]") #'er/expand-region)
+  (global-set-key (kbd "M-S-[") #'er/contract-region)
   )
 
 (add-hook 'shell-mode-hook #'ansi-color-for-comint-mode-on)
@@ -181,3 +181,6 @@
 (global-set-key (kbd "C-0") #'scale-reset)
 (global-set-key [C-mouse-4] #'scale-up)
 (global-set-key [C-mouse-5] #'scale-down)
+
+; Finally, disable some shortcuts so that terminal arrow keys can work.
+(global-unset-key (kbd "M-O"))
