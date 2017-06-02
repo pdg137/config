@@ -82,6 +82,7 @@ export PAGER=
 export PATH='/c/Program Files (x86)/Git/bin/':$PATH:~/gitprojects/pololu/system2/bin:~/gitprojects/config/bin:/c/Ruby193/bin
 #export PS1='\u@\h \w$ '
 
+export TRACK_PURCHASE_PAYMENTS_DIRECTORY=~/gitprojects/pololu/track_purchase_payments
 export TRACK_DISTRIBUTORS_DIRECTORY=~/gitprojects/pololu/track_distributors
 export TRACK_WEB_CONTENT_DIRECTORY=~/gitprojects/pololu/track_web_content
 export TRACK_TAX_DIRECTORY=~/gitprojects/pololu/track_tax
