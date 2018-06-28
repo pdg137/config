@@ -1,2 +1,0 @@
-; Pidgin GtkAccelMap rc-file         -*- scheme -*-
-(gtk_accel_path "<main>/Conversation/Clear Scrollback" "")
