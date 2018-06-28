@@ -92,8 +92,14 @@ if [ -d /usr/local/share/chruby ]; then
    source /usr/local/share/chruby/auto.sh
 fi
 
+if [ -e /home/paul/.nix-profile/etc/profile.d/nix.sh ]; then
+    source /home/paul/.nix-profile/etc/profile.d/nix.sh
+fi
+
 # uncomment this for RVM
 #[[ -s "/usr/local/rvm/scripts/rvm" ]] && source "/usr/local/rvm/scripts/rvm"  # This loads RVM into a shell session.
 
 export EDITOR=emacs
 export GIT_MERGE_AUTOEDIT=no
+
+export PATH=$PATH:"/opt/microchip/xc8/v1.33/bin"

@@ -5,3 +5,5 @@ if [ -n "$BASH_VERSION" ]; then
         . "$HOME/.bashrc"
     fi
 fi
+
+export PATH=$PATH:"/opt/microchip/xc8/v1.33/bin"
