@@ -41,6 +41,10 @@
   :ensure t
   )
 
+(use-package wgrep
+  :ensure t
+  )
+
 (use-package ergoemacs-mode
   :ensure t
   :init
@@ -181,6 +185,11 @@
 (global-set-key (kbd "C-0") #'scale-reset)
 (global-set-key [C-mouse-4] #'scale-up)
 (global-set-key [C-mouse-5] #'scale-down)
+
+(global-set-key [C-M-left] #'windmove-left)
+(global-set-key [C-M-right] #'windmove-right)
+(global-set-key [C-M-up] #'windmove-up)
+(global-set-key [C-M-down] #'windmove-down)
 
 ; Finally, disable some shortcuts so that terminal arrow keys can work.
 (global-unset-key (kbd "M-O"))
