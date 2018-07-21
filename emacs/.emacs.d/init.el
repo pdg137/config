@@ -37,13 +37,9 @@
   (bash-completion-setup)
   )
 
-(use-package magit
-  :ensure t
-  )
-
-(use-package wgrep
-  :ensure t
-  )
+(use-package magit :ensure t)
+(use-package wgrep :ensure t)
+(use-package ffap :ensure t)
 
 (use-package ergoemacs-mode
   :ensure t
@@ -177,6 +173,15 @@
 (defun scale-reset () (interactive)
   (scale-to 200))
 
+(defun split-4-ways ()
+  (interactive)
+  (delete-other-windows)
+  (split-window-right)
+  (split-window-below)
+  (windmove-right)
+  (split-window-below)
+  (windmove-left))
+
 ;; These shortcuts don't work as an ergoemacs component, but they work
 ;; here.  Unforunately it seems like repeated scrolling "clicks" don't
 ;; work correctly, so you can only scroll by one step at a time.
@@ -185,6 +190,7 @@
 (global-set-key (kbd "C-0") #'scale-reset)
 (global-set-key [C-mouse-4] #'scale-up)
 (global-set-key [C-mouse-5] #'scale-down)
+(global-set-key [M-5] #'split-4-ways)
 
 (global-set-key [C-M-left] #'windmove-left)
 (global-set-key [C-M-right] #'windmove-right)
