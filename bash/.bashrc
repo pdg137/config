@@ -93,7 +93,7 @@ fi
 unset env
 
 export PAGER=
-export PATH='/c/Program Files (x86)/Git/bin/':$PATH:~/gitprojects/pololu/system2/bin:~/gitprojects/config/bin:/c/Ruby193/bin
+export PATH='/c/Program Files (x86)/Git/bin/':$PATH:~/gitprojects/pololu/system2/bin:~/gitprojects/config/bin:/c/Ruby193/bin:~/bin
 #export PS1='\u@\h \w$ '
 
 export TRACK_PURCHASE_PAYMENTS_DIRECTORY=~/gitprojects/pololu/track_purchase_payments
