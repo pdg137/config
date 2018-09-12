@@ -187,13 +187,8 @@
   (global-set-key (kbd "M-{") #'mc/mark-previous-like-this)
   (global-set-key (kbd "M-/") #'hippie-expand)
   (global-set-key (kbd "M-~") #'sign-with-timestamp)
-  (global-set-key [C-M-j] #'windmove-left)
-  (global-set-key [C-M-l] #'windmove-right)
-  (global-set-key [C-M-i] #'windmove-up)
-  (global-set-key [C-M-k] #'windmove-down)
 
   (global-set-key (kbd "S-C-s") #'write-file)
-
 )
 (ergoemacs-require 'my-ergoemacs-keys)
 
@@ -229,6 +224,20 @@
 (global-set-key (kbd "C-x C-M-l") #'split-right-and-switch-buffer)
 (global-set-key (kbd "C-x C-M-i") #'split-up-and-switch-buffer)
 (global-set-key (kbd "C-x C-M-k") #'split-down-and-switch-buffer)
+(global-set-key (kbd "C-x g") #'magit-status)
+
+(use-package bind-key :ensure t
+  :config
+  (bind-key* "C-M-l" #'windmove-right)
+  (bind-key* "C-M-i" #'windmove-up)
+  (bind-key* "C-M-k" #'windmove-down)
+  (bind-key* "C-M-j" #'windmove-left)
+)
 
 ; Finally, disable some shortcuts so that terminal arrow keys can work.
 (global-unset-key (kbd "M-O"))
+
+(ergoemacs-package paulmove
+    :ensure t
+    :bind (("C-M-i" windmove-up)
+))
