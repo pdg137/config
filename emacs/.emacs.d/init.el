@@ -54,6 +54,14 @@
   (load-theme 'sanityinc-solarized-dark t)
   )
 
+(defun set-background-for-terminal (&optional frame)
+  (or frame (setq frame (selected-frame)))
+  "sets a darker background when in xterm-256color mode"
+  (unless (display-graphic-p frame)
+    (set-face-background 'default "gray10" frame)))
+(add-hook 'after-make-frame-functions 'set-background-for-terminal)
+(add-hook 'window-setup-hook 'set-background-for-terminal)
+
 (use-package multiple-cursors
   :ensure t
   :config
@@ -128,6 +136,36 @@
 (setq custom-file (expand-file-name "custom_file.el" user-emacs-directory))
 (load custom-file)
 
+(defun split-right-and-switch-buffer ()
+  (interactive)
+  (split-window-right)
+  (windmove-right)
+  (switch-to-buffer (other-buffer))
+  (windmove-left)
+  )
+
+(defun split-left-and-switch-buffer ()
+  (interactive)
+  (split-window-right)
+  (switch-to-buffer (other-buffer))
+  (windmove-right)
+  )
+
+(defun split-up-and-switch-buffer ()
+  (interactive)
+  (split-window-below)
+  (switch-to-buffer (other-buffer))
+  (windmove-down)
+  )
+
+(defun split-down-and-switch-buffer ()
+  (interactive)
+  (split-window-below)
+  (windmove-down)
+  (switch-to-buffer (other-buffer))
+  (windmove-up)
+  )
+
 ;(define-key dired-mode-map (kbd "C-O") 'find-file)
 (ergoemacs-component my-ergoemacs-keys ()
   "My ergoemacs keys"
@@ -151,6 +189,7 @@
   (global-set-key (kbd "M-~") #'sign-with-timestamp)
 
   (global-set-key (kbd "S-C-s") #'write-file)
+
 )
 (ergoemacs-require 'my-ergoemacs-keys)
 
@@ -173,15 +212,6 @@
 (defun scale-reset () (interactive)
   (scale-to 200))
 
-(defun split-4-ways ()
-  (interactive)
-  (delete-other-windows)
-  (split-window-right)
-  (split-window-below)
-  (windmove-right)
-  (split-window-below)
-  (windmove-left))
-
 ;; These shortcuts don't work as an ergoemacs component, but they work
 ;; here.  Unforunately it seems like repeated scrolling "clicks" don't
 ;; work correctly, so you can only scroll by one step at a time.
@@ -191,11 +221,14 @@
 (global-set-key [C-mouse-4] #'scale-up)
 (global-set-key [C-mouse-5] #'scale-down)
 (global-set-key [M-5] #'split-4-ways)
-
-(global-set-key [C-M-left] #'windmove-left)
-(global-set-key [C-M-right] #'windmove-right)
-(global-set-key [C-M-up] #'windmove-up)
-(global-set-key [C-M-down] #'windmove-down)
+(global-set-key (kbd "C-x C-M-j") #'split-left-and-switch-buffer)
+(global-set-key (kbd "C-x C-M-l") #'split-right-and-switch-buffer)
+(global-set-key (kbd "C-x C-M-i") #'split-up-and-switch-buffer)
+(global-set-key (kbd "C-x C-M-k") #'split-down-and-switch-buffer)
+(global-set-key [C-M-j] #'windmove-left)
+(global-set-key [C-M-l] #'windmove-right)
+(global-set-key [C-M-i] #'windmove-up)
+(global-set-key [C-M-k] #'windmove-down)
 
 ; Finally, disable some shortcuts so that terminal arrow keys can work.
 (global-unset-key (kbd "M-O"))
