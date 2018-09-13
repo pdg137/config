@@ -226,18 +226,23 @@
 (global-set-key (kbd "C-x C-M-k") #'split-down-and-switch-buffer)
 (global-set-key (kbd "C-x g") #'magit-status)
 
-(use-package bind-key :ensure t
-  :config
-  (bind-key* "C-M-l" #'windmove-right)
-  (bind-key* "C-M-i" #'windmove-up)
-  (bind-key* "C-M-k" #'windmove-down)
-  (bind-key* "C-M-j" #'windmove-left)
-)
+(use-package bind-key :ensure t)
 
-; Finally, disable some shortcuts so that terminal arrow keys can work.
-(global-unset-key (kbd "M-O"))
+(unbind-key "C-M-i" emacs-lisp-mode-map)
+(unbind-key "C-M-i" help-mode-map)
+(unbind-key "M-O") ; fixes terminal arrow keys
+(bind-key "C-M-l" #'windmove-right)
+(bind-key "C-M-i" #'windmove-up)
+(bind-key "C-M-k" #'windmove-down)
+(bind-key "C-M-j" #'windmove-left)
+(bind-key "M-I" #'scroll-down-command)
+(bind-key "M-K" #'scroll-up-command)
 
-(ergoemacs-package paulmove
-    :ensure t
-    :bind (("C-M-i" windmove-up)
-))
+;; Load an Ergoemacs theme including everything
+;; except move-page, since that overwrites
+;; C-M-i.
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+(if ergoemacs-mode--fast-p
+  (provide 'my_ergoemacs_theme)
+  (load "my_ergoemacs_theme"))
+(setq ergoemacs-theme "my-theme")
