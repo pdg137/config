@@ -25,7 +25,6 @@
  '(ergoemacs-mode nil)
  '(ergoemacs-mode-used "5.13.11")
  '(ergoemacs-smart-paste nil)
- '(ergoemacs-theme "standard")
  '(ergoemacs-theme-options (quote ((save-options-on-exit off))))
  '(ergoemacs-use-menus t)
  '(fci-rule-color "#073642")
