@@ -106,6 +106,8 @@
  kept-old-versions 2
  version-control t)       ; use versioned backups
 
+; these are annoying and break things (e.g. node)
+(setq create-lockfiles nil)
                                         ; Custom Shortcuts
 (global-set-key "\e`" #'shell)
 (global-set-key "\e," #'goto-line)

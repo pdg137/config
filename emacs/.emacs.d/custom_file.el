@@ -38,6 +38,9 @@
  '(max-lisp-eval-depth 10000)
  '(max-specpdl-size 10000)
  '(org-CUA-compatible nil)
+ '(package-selected-packages
+   (quote
+    (typescript-mode markdown-mode expand-region multiple-cursors color-theme-sanityinc-solarized ergoemacs-mode bash-completion wgrep magit clojure-mode sass-mode haml-mode use-package)))
  '(recentf-menu-before "Close")
  '(recentf-mode t)
  '(safe-local-variable-values (quote ((encoding . binary))))

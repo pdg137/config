@@ -1,0 +1,4 @@
+OPTIONS=number_pad:1
+OPTIONS=symset:decgraphics
+OPTIONS=pickup_types:?!$"=/+
+OPTIONS=menucolors,time
