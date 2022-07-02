@@ -2,9 +2,7 @@
 (require 'package)
 (package-initialize)
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
-
-(package-initialize)
+             '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 
 (when (not (package-installed-p 'use-package))
   (package-refresh-contents)
@@ -17,7 +15,7 @@
 (mapc
  (lambda (package)
    (eval `(use-package ,package :ensure t)))
- '(haml-mode sass-mode clojure-mode magit wgrep ffap bind-key))
+ '(haml-mode sass-mode wgrep ffap bind-key))
 
 (menu-bar-mode 0)
 
@@ -42,8 +40,9 @@
   :ensure t
   :init
   (setq ergoemacs-keyboard-layout "us")
-  (setq ergoemacs-theme "my-theme")
+  (setq ergoemacs-theme nil)
   )
+
 ;; Load an Ergoemacs theme including everything
 ;; except move-page, since that overwrites
 ;; C-M-i.
@@ -112,25 +111,6 @@
 (global-set-key "\e`" #'shell)
 (global-set-key "\e," #'goto-line)
 (global-set-key (kbd "C-@") #'set-mark-command)
-
-                                        ; Ruby
-                                        ;(load-library "rhtml-mode")
-                                        ;(load-library "two-mode-mode")
-(load-library "haml-mode")
-(load-library "sass-mode")
-
-(defun rhtml-modes ()
-  (two-mode-mode)
-  (rhtml-minor-mode))
-
-(setq auto-mode-alist
-      (append
-       (list '("\\.rhtml$" . rhtml-modes))
-       auto-mode-alist))
-
-                                        ; Timestamper
-(defun sign-with-timestamp () (interactive)
-       (insert (shell-command-to-string "echo -n ' -'$USER $(date)")))
 
 (when (eq system-type 'windows-nt)
   (setq vc-handled-backends nil)
