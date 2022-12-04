@@ -38,6 +38,10 @@
  '(org-CUA-compatible nil)
  '(package-selected-packages
    '(icicles expand-region multiple-cursors color-theme-sanityinc-solarized ergoemacs-mode bash-completion wgrep magit clojure-mode sass-mode haml-mode use-package))
+ '(org-CUA-compatible nil)
+ '(org-replace-disputed-keys nil)
+ '(package-selected-packages
+   '(persistent-soft typescript-mode markdown-mode expand-region multiple-cursors color-theme-sanityinc-solarized ergoemacs-mode bash-completion wgrep magit clojure-mode sass-mode haml-mode use-package))
  '(recentf-menu-before "Close")
  '(recentf-mode t)
  '(safe-local-variable-values '((encoding . binary)))
