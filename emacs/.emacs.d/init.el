@@ -88,6 +88,7 @@
 
 (add-to-list 'auto-mode-alist '("\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
+(setq ruby-insert-encoding-magic-comment nil)
 
                                         ; Use UTF-8
 (setq locale-coding-system 'utf-8)
