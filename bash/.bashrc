@@ -117,3 +117,4 @@ export EDITOR=emacs
 export GIT_MERGE_AUTOEDIT=no
 
 export PATH=$PATH:"/opt/microchip/xc8/v1.33/bin"
+export MICRO_TRUECOLOR=1

@@ -1,0 +1,23 @@
+{
+    "Alt-/": "lua:comment.comment",
+    "Alt-4": "VSplit",
+    "Alt-;": "Find",
+    "Alt-K": "PageDown",
+    "Alt-h": "StartOfLine",
+    "Alt-i": "CursorUp",
+    "Alt-j": "CursorLeft",
+    "Alt-k": "CursorDown",
+    "Alt-l": "CursorRight",
+    "Alt-n": "CursorStart",
+    "Alt-o": "WordRight",
+    "Alt-u": "WordLeft",
+    "Ctrl-Shift-H": "EndOfLine",
+    "CtrlUnderscore": "lua:comment.comment",
+    "Shift-Alt-#": "SpawnMultiCursorDown",
+    "Shift-Alt-$": "HSplit",
+    "Shift-Alt-:": "FindPrevious",
+    "Shift-Alt-H": "EndOfLine",
+    "Shift-Alt-I": "PageUp",
+    "Shift-Alt-K": "PageDown",
+    "Shift-Alt-N": "CursorEnd"
+}
