@@ -1,4 +1,6 @@
-(add-to-list 'load-path "~/.emacs.d/lisp/")
+(setq custom-file (expand-file-name "custom_file.el" user-emacs-directory))
+(load custom-file)
+
 (require 'package)
 (package-initialize)
 (add-to-list 'package-archives
@@ -19,36 +21,24 @@
 
 (menu-bar-mode 0)
 
-                                        ; Don't split horizontally
+;; Key binding helpers
+(defun bind (key f)
+  (bind-key key f ergoemacs-user-keymap)
+  (bind-key key f)
+  )
+
+(defun unbind (key f)
+  (unbind-key key ergoemacs-user-keymap)
+  (unbind-key key)
+  )
+
+;; Don't auto split horizontally
 (setq split-height-threshold nil)
 (setq split-width-threshold nil)
 
-                                        ; Indent normally
+;; Indent normally
 (setq c-default-style "linux"
       c-basic-offset 2)
-
-(setq js-indent-level 2)
-
-                                        ; brings awesome bash tab completion to emacs shell-mode
-(use-package bash-completion
-  :ensure t
-  :config
-  (bash-completion-setup)
-  )
-
-(use-package ergoemacs-mode
-  :ensure t
-  :init
-  (setq ergoemacs-keyboard-layout "us")
-  (setq ergoemacs-theme nil)
-  )
-
-;; Load an Ergoemacs theme including everything
-;; except move-page, since that overwrites
-;; C-M-i.
-(if ergoemacs-mode--fast-p
-    (provide 'my_ergoemacs_theme)
-  (load "my_ergoemacs_theme"))
 
 (use-package color-theme-sanityinc-solarized
   :ensure t
@@ -67,8 +57,8 @@
 (use-package multiple-cursors
   :ensure t
   :config
-  (global-set-key (kbd "M-m") #'mc/edit-lines)
-  (global-set-key (kbd "M-#") #'set-rectangular-region-anchor)
+  (bind "M-m" 'mc/edit-lines)
+  (bind "M-#" 'set-rectangular-region-anchor)
   )
 
 (use-package expand-region
@@ -78,25 +68,18 @@
   (global-set-key (kbd "M-S-[") #'er/contract-region)
   )
 
-(add-hook 'shell-mode-hook #'ansi-color-for-comint-mode-on)
-(add-to-list 'comint-output-filter-functions #'ansi-color-process-output)
-
-;; This is supposed to allow PS1 to have custom colors, but it doesn't work.
-;;(set-face-attribute 'comint-highlight-prompt nil
-;;                    :inherit nil)
-
 (add-to-list 'auto-mode-alist '("\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (setq ruby-insert-encoding-magic-comment nil)
 
-                                        ; Use UTF-8
+;; Use UTF-8
 (setq locale-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
-                                        ; Put backups in a better place
+;; Put backups in a better place
 (setq
  backup-by-copying t      ; don't clobber symlinks
  backup-directory-alist
@@ -106,21 +89,78 @@
  kept-old-versions 2
  version-control t)       ; use versioned backups
 
-; these are annoying and break things (e.g. node)
+;; These are annoying and break things (e.g. node)
 (setq create-lockfiles nil)
-                                        ; Custom Shortcuts
-(global-set-key "\e`" #'shell)
-(global-set-key "\e," #'goto-line)
-(global-set-key (kbd "C-@") #'set-mark-command)
 
+;; Shell improvements
 (when (eq system-type 'windows-nt)
-  (setq vc-handled-backends nil)
-  (set-variable 'explicit-shell-file-name "c:/Program Files \(x86\)/Git/bin/bash.exe")
+  ;(setq vc-handled-backends nil)
+  (set-variable 'explicit-shell-file-name "c:/Program Files/Git/bin/bash.exe")
   (set-variable 'shell-file-name "bash")
   )
+(add-hook 'shell-mode-hook #'ansi-color-for-comint-mode-on)
+(add-to-list 'comint-output-filter-functions #'ansi-color-process-output)
 
-(setq custom-file (expand-file-name "custom_file.el" user-emacs-directory))
-(load custom-file)
+;; Brings awesome bash tab completion to emacs shell-mode
+(use-package bash-completion
+  :ensure t
+  :config
+  (bash-completion-setup)
+  )
+
+;; General key bindings
+(bind-keys :map ergoemacs-user-keymap
+           :prefix-map split-window-map
+           :prefix "C-x 2"
+           ("i" . split-up-and-switch-buffer)
+           ("k" . split-down-and-switch-buffer)
+           ("j" . split-left-and-switch-buffer)
+           ("l" . split-right-and-switch-buffer)
+           )
+
+(bind-keys :map ergoemacs-user-keymap
+           :prefix-map windmove-map
+           :prefix "C-x o"
+           ("i" . windmove-up)
+           ("k" . windmove-down)
+           ("j" . windmove-left)
+           ("l" . windmove-right)
+           )
+
+(bind-keys :map ergoemacs-user-keymap
+           :prefix-map delete-window-map
+           :prefix "C-x 0"
+           ("i" . delete-window-up)
+           ("k" . delete-window-down)
+           ("j" . delete-window-left)
+           ("l" . delete-window-right)
+           ("SPC" . delete-window)
+           )
+
+;; My misc shortcuts
+;; Some of these restore standard Emacs keys that were disabled in
+;; ergoemacs.
+(bind "M-<up>" 'capitalize-word)
+(bind "S-M-<up>" 'upcase-word)
+(bind "S-M-<down>" 'downcase-word)
+(bind "C-t" 'transpose-chars)
+(bind "M-t" 'transpose-words)
+(bind "M-;" 'isearch-forward)
+(bind "M-:" 'isearch-backward)
+(bind "S-C-f" 'isearch-backward)
+(bind "C-SPC" 'set-mark-command)
+(bind "C-@" 'set-mark-command)
+(bind "C-x C-k" 'ergoemacs-close-current-buffer)
+(bind "C-x k" 'kill-buffer)
+(bind "M-}" 'mc/mark-next-like-this)
+(bind "M-{" 'mc/mark-previous-like-this)
+(bind "M-/" 'hippie-expand)
+(bind "S-C-s" 'write-file)
+(bind "M-`" 'shell)
+(bind "M-," 'goto-line)
+
+
+; Window motion commands
 
 (defun split-right-and-switch-buffer ()
   (interactive)
@@ -176,68 +216,18 @@
   (delete-window)
   )
 
-(ergoemacs-component my-ergoemacs-keys ()
-  "My ergoemacs keys"
-  (unbind-key "M-O") ; fixes terminal arrow keys
+(bind "C-x 1" 'delete-other-windows)
 
-  (global-set-key (kbd "M-<up>") #'capitalize-word)
-  (global-set-key (kbd "S-M-<up>") #'upcase-word)
-  (global-set-key (kbd "S-M-<down>") #'downcase-word)
-  (global-set-key (kbd "C-t") #'transpose-chars)
-  (global-set-key (kbd "M-t") #'transpose-words)
-  (global-set-key (kbd "M-;") #'isearch-forward)
-  (global-set-key (kbd "M-:") #'isearch-backward)
-  (global-set-key (kbd "S-C-f") #'isearch-backward)
-  (global-set-key (kbd "C-SPC") #'set-mark-command)
+; Add more minor modes here if you find that it's broken
+(unbind "C-M-i" emacs-lisp-mode-map)
+(unbind "C-M-i" help-mode-map)
 
-  (global-set-key (kbd "C-x C-k") #'ergoemacs-close-current-buffer)
-  (global-set-key (kbd "C-x k") #'kill-buffer)
+(bind "C-M-j" 'windmove-left)
+(bind "C-M-l" 'windmove-right)
+(bind "C-M-k" 'windmove-down)
+(bind "C-M-i" 'windmove-up)
 
-  (global-set-key (kbd "M-}") #'mc/mark-next-like-this)
-  (global-set-key (kbd "M-{") #'mc/mark-previous-like-this)
-  (global-set-key (kbd "M-/") #'hippie-expand)
-  (global-set-key (kbd "M-~") #'sign-with-timestamp)
-
-  (global-set-key (kbd "S-C-s") #'write-file)
-
-  (bind-key "C-M-l" #'windmove-right)
-  (bind-key "C-M-k" #'windmove-down)
-  (bind-key "C-M-j" #'windmove-left)
-  (bind-key "C-x 1" #'delete-other-windows)
-  ;; C-M-i must be handled specially (below)
-
-  (bind-keys :prefix-map windmove-map
-             :prefix "C-x o"
-             ("i" . windmove-up)
-             ("k" . windmove-down)
-             ("j" . windmove-left)
-             ("l" . windmove-right)
-             )
-
-  (bind-keys :prefix-map delete-window-map
-             :prefix "C-x 0"
-             ("i" . delete-window-up)
-             ("k" . delete-window-down)
-             ("j" . delete-window-left)
-             ("l" . delete-window-right)
-             ("SPC" . delete-window)
-             )
-
-  (bind-keys :prefix-map split-window-map
-             :prefix "C-x 2"
-             ("i" . split-up-and-switch-buffer)
-             ("k" . split-down-and-switch-buffer)
-             ("j" . split-left-and-switch-buffer)
-             ("l" . split-right-and-switch-buffer)
-             )
-
-  ;; Recover shortcuts we lost when removing page-move from ergoemacs.
-  (bind-key "M-I" #'scroll-down-command)
-  (bind-key "M-K" #'scroll-up-command)
-  )
-(ergoemacs-require 'my-ergoemacs-keys)
-
-                                        ; mousewheel and C-+ C-- scrolling
+; Mousewheel and C-+ C-- scrolling
 (defun scale-to (f)
   (set-face-attribute 'default nil :height
                       (round f)
@@ -256,18 +246,26 @@
 (defun scale-reset () (interactive)
        (scale-to 200))
 
-;; The  shortcuts don't work as an ergoemacs component, but
-;; they work here.  Unforunately it seems like repeated scrolling
-;; "clicks" don't work correctly, so you can only scroll by one step
-;; at a time.
-(unbind-key "C-M-i" emacs-lisp-mode-map)
-(unbind-key "C-M-i" help-mode-map)
-(bind-key "C-M-i" #'windmove-up)
-(bind-key "C-M-l" #'windmove-right)
+(bind "C--" 'scale-down)
+(bind "C-+" 'scale-up)
+(bind "C-=" 'scale-up)
 
-(bind-key [C-mouse-4] #'scale-up)
-(bind-key [C-mouse-5] #'scale-down)
-(bind-key "C-=" #'scale-up)
-(bind-key "C--" #'scale-down)
-(bind-key "C-0" #'scale-reset)
-(bind-key "C-x g" #'magit-status)
+(bind "C-<wheel-up>" 'scale-down)
+(bind "C-<double-wheel-up>" 'scale-down)
+(bind "C-<triple-wheel-up>" 'scale-down)
+(bind "C-<wheel-down>" 'scale-up)
+(bind "C-<double-wheel-down>" 'scale-up)
+(bind "C-<triple-wheel-down>" 'scale-up)
+
+(bind "C-0" 'scale-reset)
+
+(bind "C-x g" 'magit-status)
+
+(use-package ergoemacs-mode
+  :ensure t
+  :init
+  (setq ergoemacs-keyboard-layout "us")
+  (setq ergoemacs-theme nil)
+  :config
+  (ergoemacs-mode 1)
+  )

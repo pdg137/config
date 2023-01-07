@@ -23,6 +23,7 @@
  '(ergoemacs-mode nil)
  '(ergoemacs-mode-used "5.13.11")
  '(ergoemacs-smart-paste nil)
+ '(ergoemacs-theme 'my_ergoemacs_theme)
  '(ergoemacs-theme-options '((save-options-on-exit off)))
  '(ergoemacs-use-menus t)
  '(fci-rule-color "#073642")
@@ -35,10 +36,7 @@
 ;; then enter the text in that file's own buffer.")
  '(max-lisp-eval-depth 10000)
  '(max-specpdl-size 10000)
- '(org-CUA-compatible nil)
- '(package-selected-packages
-   '(icicles expand-region multiple-cursors color-theme-sanityinc-solarized ergoemacs-mode bash-completion wgrep magit clojure-mode sass-mode haml-mode use-package))
- '(org-CUA-compatible nil)
+ '(org-CUA-compatible nil t)
  '(org-replace-disputed-keys nil)
  '(package-selected-packages
    '(persistent-soft typescript-mode markdown-mode expand-region multiple-cursors color-theme-sanityinc-solarized ergoemacs-mode bash-completion wgrep magit clojure-mode sass-mode haml-mode use-package))
@@ -81,6 +79,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#002b36" :foreground "#839496" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 203 :width normal :foundry "ADBE" :family "Source Code Pro"))))
+ '(default ((t (:inherit nil :stipple nil :background "#002b36" :foreground "#839496" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "ADBE" :family "Source Code Pro"))))
  '(comint-highlight-input ((t (:foreground "gainsboro" :weight bold))))
  '(comint-highlight-prompt ((t (:inherit minibuffer-prompt :foreground "dim gray")))))
