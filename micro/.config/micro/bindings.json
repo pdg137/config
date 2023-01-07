@@ -2,7 +2,11 @@
     "Alt-/": "lua:comment.comment",
     "Alt-4": "VSplit",
     "Alt-;": "Find",
+    "Alt-I": "PageUp",
     "Alt-K": "PageDown",
+    "Alt-N": "CursorEnd",
+    "Alt-`": "command:term",
+    "Alt-a": "command-edit:",
     "Alt-h": "StartOfLine",
     "Alt-i": "CursorUp",
     "Alt-j": "CursorLeft",
@@ -11,6 +15,7 @@
     "Alt-n": "CursorStart",
     "Alt-o": "WordRight",
     "Alt-u": "WordLeft",
+    "Alt-x": "CutLine",
     "Ctrl-Shift-H": "EndOfLine",
     "CtrlUnderscore": "lua:comment.comment",
     "Shift-Alt-#": "SpawnMultiCursorDown",
@@ -18,6 +23,5 @@
     "Shift-Alt-:": "FindPrevious",
     "Shift-Alt-H": "EndOfLine",
     "Shift-Alt-I": "PageUp",
-    "Shift-Alt-K": "PageDown",
-    "Shift-Alt-N": "CursorEnd"
+    "Shift-Alt-K": "PageDown"
 }

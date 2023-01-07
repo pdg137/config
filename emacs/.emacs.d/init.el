@@ -263,6 +263,7 @@
 (unbind-key "C-M-i" emacs-lisp-mode-map)
 (unbind-key "C-M-i" help-mode-map)
 (bind-key "C-M-i" #'windmove-up)
+(bind-key "C-M-l" #'windmove-right)
 
 (bind-key [C-mouse-4] #'scale-up)
 (bind-key [C-mouse-5] #'scale-down)
