@@ -101,6 +101,15 @@
 (add-hook 'shell-mode-hook #'ansi-color-for-comint-mode-on)
 (add-to-list 'comint-output-filter-functions #'ansi-color-process-output)
 
+(use-package ergoemacs-mode
+  :ensure t
+  :init
+  (setq ergoemacs-keyboard-layout "us")
+  (setq ergoemacs-theme nil)
+  :config
+  (ergoemacs-mode 1)
+  )
+
 ;; Brings awesome bash tab completion to emacs shell-mode
 (use-package bash-completion
   :ensure t
@@ -260,12 +269,3 @@
 (bind "C-0" 'scale-reset)
 
 (bind "C-x g" 'magit-status)
-
-(use-package ergoemacs-mode
-  :ensure t
-  :init
-  (setq ergoemacs-keyboard-layout "us")
-  (setq ergoemacs-theme nil)
-  :config
-  (ergoemacs-mode 1)
-  )
