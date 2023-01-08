@@ -40,9 +40,10 @@
 
 (defun set-background-for-terminal (&optional frame)
   (or frame (setq frame (selected-frame)))
-  "sets a darker background when in xterm-256color mode"
-  (unless (display-graphic-p frame)
-    (set-face-background 'default "gray10" frame)))
+  "sets a darker background when there are not many colors"
+  (if (> 100 (length (defined-colors)))
+    (set-face-background 'default "gray10" frame)
+    ))
 (add-hook 'after-make-frame-functions 'set-background-for-terminal)
 (add-hook 'window-setup-hook 'set-background-for-terminal)
 
