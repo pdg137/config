@@ -1,6 +1,3 @@
-(setq custom-file (expand-file-name "custom_file.el" user-emacs-directory))
-(load custom-file)
-
 (require 'package)
 (package-initialize)
 (add-to-list 'package-archives
@@ -9,6 +6,9 @@
 (when (not (package-installed-p 'use-package))
   (package-refresh-contents)
   (package-install 'use-package))
+
+(setq custom-file (expand-file-name "custom_file.el" user-emacs-directory))
+(load custom-file)
 
 (eval-when-compile
   (defvar use-package-verbose t)
@@ -279,16 +279,3 @@
 
 ;; Misc config
 (menu-bar-mode 0)
-
-;; Ugly hack to disable focus reporting that messes up Ergoemacs.
-(use-package terminal-focus-reporting
-  :demand t
-  :ensure t
-  :config
-  (unless (display-graphic-p)
-    (add-hook 'ergoemacs-mode-startup-hook
-              (lambda ()
-                (message "Disabling focus reporting...")
-                (terminal-focus-reporting--deactivate)
-                )
-              )))
