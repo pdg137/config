@@ -14,12 +14,8 @@
   (defvar use-package-verbose t)
   (require 'use-package))
 
-(mapc
- (lambda (package)
-   (eval `(use-package ,package :ensure t)))
- '(haml-mode sass-mode wgrep ffap bind-key))
-
-(menu-bar-mode 0)
+(use-package bind-key
+  :ensure t)
 
 ;; Key binding helpers
 (defun bind (key f)
@@ -31,10 +27,6 @@
   (unbind-key key ergoemacs-user-keymap)
   (unbind-key key)
   )
-
-;; Don't auto split horizontally
-(setq split-height-threshold nil)
-(setq split-width-threshold nil)
 
 ;; Indent normally
 (setq c-default-style "linux"
@@ -66,6 +58,19 @@
   :config
   (global-set-key (kbd "M-S-]") #'er/expand-region)
   (global-set-key (kbd "M-S-[") #'er/contract-region)
+  )
+
+;; Find file at point
+;; Overrides open init.el
+(use-package ffap
+  :ensure t
+  :config
+  (ffap-bindings)
+  )
+
+;; Writeable grep
+(use-package wgrep
+  :ensure t
   )
 
 (add-to-list 'auto-mode-alist '("\.rake$" . ruby-mode))
@@ -102,6 +107,7 @@
 (add-to-list 'comint-output-filter-functions #'ansi-color-process-output)
 
 (use-package ergoemacs-mode
+  :demand t
   :ensure t
   :init
   (setq ergoemacs-keyboard-layout "us")
@@ -145,6 +151,7 @@
            ("l" . delete-window-right)
            ("SPC" . delete-window)
            )
+
 
 ;; My misc shortcuts
 ;; Some of these restore standard Emacs keys that were disabled in
@@ -269,3 +276,19 @@
 (bind "C-0" 'scale-reset)
 
 (bind "C-x g" 'magit-status)
+
+;; Misc config
+(menu-bar-mode 0)
+
+;; Ugly hack to disable focus reporting that messes up Ergoemacs.
+(use-package terminal-focus-reporting
+  :demand t
+  :ensure t
+  :config
+  (unless (display-graphic-p)
+    (add-hook 'ergoemacs-mode-startup-hook
+              (lambda ()
+                (message "Disabling focus reporting...")
+                (terminal-focus-reporting--deactivate)
+                )
+              )))
