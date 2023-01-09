@@ -7,6 +7,8 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(setq ergoemacs-user-keymap (make-keymap))
+
 (setq custom-file (expand-file-name "custom_file.el" user-emacs-directory))
 (load custom-file)
 
