@@ -4,7 +4,7 @@ To get started on a new server, first back up and remove your existing `.emacs`,
 
 ```
 git clone https://pdg137@github.com/pdg137/config.git
-cd config && make
+cd config && ./install.sh
 ```
 
 Running emacs should automatically install all packages from Melpa.
