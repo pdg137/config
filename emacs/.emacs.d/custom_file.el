@@ -17,6 +17,7 @@
  '(delete-selection-mode t)
  '(display-time-mode t)
  '(ergoemacs-ctl-c-or-ctl-x-delay 0.2)
+ '(ergoemacs-default-cursor-color "violet red")
  '(ergoemacs-handle-ctl-c-or-ctl-x 'both)
  '(ergoemacs-ini-mode t)
  '(ergoemacs-keyboard-layout "us")
@@ -39,7 +40,7 @@
  '(org-CUA-compatible nil t)
  '(org-replace-disputed-keys nil)
  '(package-selected-packages
-   '(icicles terminal-focus-reporting persistent-soft typescript-mode markdown-mode expand-region multiple-cursors color-theme-sanityinc-solarized ergoemacs-mode bash-completion wgrep magit clojure-mode sass-mode haml-mode use-package))
+   '(undo-fu undo-tree icicles terminal-focus-reporting persistent-soft typescript-mode markdown-mode expand-region multiple-cursors color-theme-sanityinc-solarized ergoemacs-mode bash-completion wgrep magit clojure-mode sass-mode haml-mode use-package))
  '(recentf-menu-before "Close")
  '(recentf-mode t)
  '(safe-local-variable-values '((encoding . binary)))
@@ -81,4 +82,8 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#002b36" :foreground "#839496" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "ADBE" :family "Source Code Pro"))))
  '(comint-highlight-input ((t (:foreground "gainsboro" :weight bold))))
- '(comint-highlight-prompt ((t (:inherit minibuffer-prompt :foreground "dim gray")))))
+ '(comint-highlight-prompt ((t (:inherit minibuffer-prompt :foreground "dim gray"))))
+ '(cursor ((t (:background "violet red"))))
+ '(lazy-highlight ((t (:background "#2aa198" :foreground "#073642"))))
+ '(line-number ((t (:foreground "#2f525b"))))
+ '(line-number-current-line ((t (:inherit default :foreground "#586e75")))))
