@@ -100,8 +100,9 @@
                                         ; else - flyspell is off, turn it on
     (flyspell-on-for-buffer-type)))
 
-(add-hook 'find-file-hook 'flyspell-on-for-buffer-type)
-(add-hook 'after-change-major-mode-hook 'flyspell-on-for-buffer-type)
+;; Ways to turn on flyspell for ALL buffers (this is annoying though)
+;;(add-hook 'find-file-hook 'flyspell-on-for-buffer-type)
+;;(add-hook 'after-change-major-mode-hook 'flyspell-on-for-buffer-type)
 
 (bind "C-M-4" 'flyspell-toggle)
 (bind "M-$" 'flyspell-buffer)
