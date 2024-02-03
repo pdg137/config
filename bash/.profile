@@ -7,3 +7,5 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 export PATH=$PATH:"/opt/microchip/xc8/v1.33/bin"
+
+if [ -e /home/paul/.nix-profile/etc/profile.d/nix.sh ]; then . /home/paul/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

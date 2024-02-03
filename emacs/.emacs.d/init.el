@@ -76,6 +76,14 @@
   :ensure t
   )
 
+(use-package markdown-mode
+  :ensure t
+  )
+
+(use-package nix-mode
+  :ensure t
+  )
+
 (defun flyspell-on-for-buffer-type ()
   "Enable Flyspell appropriately for the major mode of the current buffer.  Uses `flyspell-prog-mode' for modes derived from `prog-mode', so only strings and comments get checked.  All other buffers get `flyspell-mode' to check all text.  If flyspell is already enabled, does nothing."
   (interactive)
