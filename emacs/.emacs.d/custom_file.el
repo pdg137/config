@@ -3,6 +3,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-bold-is-bright t)
  '(ansi-color-faces-vector
    [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector
@@ -81,6 +82,22 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#002b36" :foreground "#839496" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 135 :width normal :foundry "ADBE" :family "Source Code Pro"))))
+ '(ansi-color-black ((t (:background "#002b36" :foreground "#002b36"))))
+ '(ansi-color-blue ((t (:background "#6c71c4" :foreground "#6c71c4"))))
+ '(ansi-color-bright-black ((t (:background "#073642" :foreground "#073642"))))
+ '(ansi-color-bright-blue ((t (:background "#268bd2" :foreground "#268bd2"))))
+ '(ansi-color-bright-cyan ((t (:background "#2aa198" :foreground "#2aa198"))))
+ '(ansi-color-bright-green ((t (:background "#859900" :foreground "#859900"))))
+ '(ansi-color-bright-magenta ((t (:background "#d33682" :foreground "#d33682"))))
+ '(ansi-color-bright-red ((t (:background "#dc322f" :foreground "#dc322f"))))
+ '(ansi-color-bright-white ((t (:background "#fdf6e3" :foreground "#fdf6e3"))))
+ '(ansi-color-bright-yellow ((t (:background "#b58900" :foreground "#b58900"))))
+ '(ansi-color-cyan ((t (:background "#2aa198" :foreground "#2aa198"))))
+ '(ansi-color-green ((t (:background "#859900" :foreground "#859900"))))
+ '(ansi-color-magenta ((t (:background "#6c71c4" :foreground "#6c71c4"))))
+ '(ansi-color-red ((t (:background "#dc322f" :foreground "#dc322f"))))
+ '(ansi-color-white ((t (:background "#839496" :foreground "#839496"))))
+ '(ansi-color-yellow ((t (:background "#cb4b16" :foreground "#cb4b16"))))
  '(comint-highlight-input ((t (:foreground "gainsboro" :weight bold))))
  '(comint-highlight-prompt ((t (:inherit minibuffer-prompt :foreground "dim gray"))))
  '(cursor ((t (:background "violet red"))))
