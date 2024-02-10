@@ -166,6 +166,7 @@
   :ensure t
   :config
   (bash-completion-setup)
+  (set-variable 'bash-completion-use-separate-processes t)
   )
 
 ;; General key bindings
