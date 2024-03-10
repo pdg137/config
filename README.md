@@ -1,4 +1,4 @@
-Config files for Emacs, Bash, etc.
+My home-manager-based config.
 
 To get started on a new server, first back up and remove your existing `.emacs`, `.bashrc`, and `.profile`. Then run the following:
 
