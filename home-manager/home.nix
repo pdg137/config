@@ -10,10 +10,21 @@
 
   home.packages = [
     pkgs.gnucash
-    pkgs.emacs
     pkgs.nethack
     pkgs.ruby
     ((import ./my-scripts.nix) pkgs)
+    (pkgs.emacs.pkgs.withPackages (epkgs: with epkgs; [
+      use-package
+      nix-mode
+      bind-key
+      color-theme-sanityinc-solarized
+      multiple-cursors
+      expand-region
+      wgrep
+      markdown-mode
+      ergoemacs-mode
+      bash-completion
+    ]))
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -24,11 +35,8 @@
     ".profile".source = dotfiles/profile;
     ".irbrc".source = dotfiles/irbrc;
     ".tmux.conf".source = dotfiles/tmux.conf;
-
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
+    ".emacs.d/init.el".source = dotfiles/init.el;
+    ".emacs.d/custom_file.el".source = dotfiles/custom_file.el;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
