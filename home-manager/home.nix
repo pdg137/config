@@ -14,9 +14,9 @@ with {
   home.stateVersion = "23.11";
 
   home.packages = [
-    pkgs.gnucash
-    pkgs.nethack
-    pkgs.ruby
+    #pkgs.gnucash
+    #pkgs.nethack
+    #pkgs.ruby
     pkgs.ncurses
     ((import ./my-scripts.nix) pkgs)
     (pkgs.emacs.pkgs.withPackages (epkgs: with epkgs; [
