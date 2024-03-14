@@ -44,6 +44,7 @@ with {
     ".tmux.conf".source = dotfiles/tmux.conf;
     ".emacs.d/init.el".source = link dotfiles/init.el;
     ".emacs.d/custom_file.el".source = link dotfiles/custom_file.el;
+    ".config/htop/htoprc".source = dotfiles/htoprc;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
