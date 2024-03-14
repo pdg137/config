@@ -3,6 +3,11 @@
 
 { config, pkgs, ... }:
 
+with {
+  # Link some dotfiles to allow editing in place.
+  link = config.lib.file.mkOutOfStoreSymlink;
+};
+
 {
   home.username = "paul";
   home.homeDirectory = "/home/paul";
@@ -12,6 +17,7 @@
     pkgs.gnucash
     pkgs.nethack
     pkgs.ruby
+    pkgs.ncurses
     ((import ./my-scripts.nix) pkgs)
     (pkgs.emacs.pkgs.withPackages (epkgs: with epkgs; [
       use-package
@@ -27,16 +33,17 @@
     ]))
   ];
 
+
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
     ".nethackrc".source = dotfiles/nethackrc;
-    ".bashrc".source = dotfiles/bashrc;
-    ".profile".source = dotfiles/profile;
+    ".bashrc".source = dotfiles/bashrc.sh;
+    ".profile".source = dotfiles/profile.sh;
     ".irbrc".source = dotfiles/irbrc;
     ".tmux.conf".source = dotfiles/tmux.conf;
-    ".emacs.d/init.el".source = dotfiles/init.el;
-    ".emacs.d/custom_file.el".source = dotfiles/custom_file.el;
+    ".emacs.d/init.el".source = link dotfiles/init.el;
+    ".emacs.d/custom_file.el".source = link dotfiles/custom_file.el;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''

@@ -3,12 +3,7 @@
 (setq custom-file (expand-file-name "custom_file.el" user-emacs-directory))
 (load custom-file)
 
-(eval-when-compile
-  (defvar use-package-verbose t)
-  (require 'use-package))
-
-(use-package bind-key
-  :ensure t)
+(use-package bind-key)
 
 ;; Key binding helpers
 (defun bind (key f)
@@ -26,7 +21,6 @@
       c-basic-offset 2)
 
 (use-package color-theme-sanityinc-solarized
-  :ensure t
   :config
   (load-theme 'sanityinc-solarized-dark t)
   )
@@ -41,26 +35,19 @@
 (add-hook 'window-setup-hook 'set-background-for-terminal)
 
 (use-package multiple-cursors
-  :ensure t
   :config
   (bind "M-m" 'mc/edit-lines)
   (bind "M-#" 'set-rectangular-region-anchor)
   )
 
 (use-package expand-region
-  :ensure t
   :config
   (global-set-key (kbd "M-S-]") #'er/expand-region)
   (global-set-key (kbd "M-S-[") #'er/contract-region)
   )
 
 ;; Find file at point
-;; Overrides open init.el
-(use-package ffap
-  :ensure t
-  :config
-  (ffap-bindings)
-  )
+(ffap-bindings)
 
 (defun flyspell-on-for-buffer-type ()
   "Enable Flyspell appropriately for the major mode of the current buffer.  Uses `flyspell-prog-mode' for modes derived from `prog-mode', so only strings and comments get checked.  All other buffers get `flyspell-mode' to check all text.  If flyspell is already enabled, does nothing."
@@ -130,8 +117,6 @@
 (add-to-list 'comint-output-filter-functions #'ansi-color-process-output)
 
 (use-package ergoemacs-mode
-  :demand t
-  :ensure t
   :init
   (setq ergoemacs-keyboard-layout "us")
   (setq ergoemacs-theme nil)
@@ -141,7 +126,6 @@
 
 ;; Brings awesome bash tab completion to emacs shell-mode
 (use-package bash-completion
-  :ensure t
   :config
   (bash-completion-setup)
   (set-variable 'bash-completion-use-separate-processes t)
