@@ -6,8 +6,8 @@ with {
 };
 
 {
-  home.username = "paul";
-  home.homeDirectory = "/home/paul";
+  home.username = builtins.getEnv "USER";
+  home.homeDirectory = builtins.getEnv "HOME";
   home.stateVersion = "23.11";
 
   home.packages = [

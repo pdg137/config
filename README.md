@@ -4,7 +4,8 @@ To get started on a new server, first back up and remove your existing `.emacs`,
 
 ```
 git clone https://pdg137@github.com/pdg137/config.git
-cd config && ./install.sh
+cd config/home-manager
+nix-shell --run 'home-manager switch'
 ```
 
 Running emacs should automatically install all packages from Melpa.
