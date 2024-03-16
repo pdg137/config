@@ -40,6 +40,11 @@
   (bind "M-#" 'set-rectangular-region-anchor)
   )
 
+;; Clipboard TTY copy
+(use-package clipetty
+  :config
+  (global-clipetty-mode))
+
 (use-package expand-region
   :config
   (global-set-key (kbd "M-S-]") #'er/expand-region)

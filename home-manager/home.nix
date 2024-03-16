@@ -13,6 +13,7 @@ with {
   home.packages = [
     pkgs.ruby
     pkgs.ncurses
+    # ((import ./packages/micro.nix) pkgs)
     ((import ./my-scripts.nix) pkgs)
     (pkgs.emacs.pkgs.withPackages (epkgs: with epkgs; [
       use-package
@@ -25,6 +26,7 @@ with {
       markdown-mode
       ergoemacs-mode
       bash-completion
+      clipetty
     ]))
   ] ++ extra-packages;
 
