@@ -7,7 +7,9 @@ esac
 # append to the history file, don't overwrite it
 shopt -s histappend
 
-if [ -e /home/paul/.nix-profile/etc/profile.d/nix.sh ]; then
+if [ -e /home/paul/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then
+    source /home/paul/.nix-profile/etc/profile.d/hm-session-vars.sh
+elif [ -e /home/paul/.nix-profile/etc/profile.d/nix.sh ]; then
     source /home/paul/.nix-profile/etc/profile.d/nix.sh
 fi
 
