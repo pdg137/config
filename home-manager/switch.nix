@@ -12,6 +12,19 @@ let
 
   home-manager = (import home-manager-src {inherit pkgs;}).home-manager;
 
+  # Makes a script installed in the nix store.
+  make-static-script = file:
+    let
+      repo = pkgs.stdenv.mkDerivation {
+       name = "my-home-manager";
+       src = ./.;
+       installPhase = "cp -r $src $out";
+      };
+    in
+      make-script "${repo}/${file}";
+
+  # Makes a script referencing files in this folder (so you can
+  # edit them and run the script to switch immediately.)
   make-script = file:
     pkgs.writeShellScript "switch" ''
       read -p "Press enter to switch configuration to ${file}..."
@@ -21,7 +34,8 @@ let
 
 in
   {
-    desktop = make-script "./desktop.nix";
-    server = make-script "./server.nix";
-    none = assert false; "Build with -A desktop or -A server";
+    desktop = make-script "desktop.nix";
+    server = make-script "server.nix";
+    server-static = make-static-script "server.nix";
+    none = assert false; "Build with -A <type>";
   }
