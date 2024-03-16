@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, extra-packages ? [] }:
 
 with {
   # Link some dotfiles to allow editing in place.
@@ -11,9 +11,7 @@ with {
   home.stateVersion = "23.11";
 
   home.packages = [
-    #pkgs.gnucash
-    #pkgs.nethack
-    #pkgs.ruby
+    pkgs.ruby
     pkgs.ncurses
     ((import ./my-scripts.nix) pkgs)
     (pkgs.emacs.pkgs.withPackages (epkgs: with epkgs; [
@@ -28,7 +26,7 @@ with {
       ergoemacs-mode
       bash-completion
     ]))
-  ];
+  ] ++ extra-packages;
 
   home.file = {
     ".nethackrc".source = dotfiles/nethackrc;
@@ -40,6 +38,4 @@ with {
     ".emacs.d/custom_file.el".source = link dotfiles/custom_file.el;
     ".config/htop/htoprc".source = dotfiles/htoprc;
   };
-
-  programs.home-manager.enable = true;
 }
