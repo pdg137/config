@@ -9,7 +9,9 @@ shopt -s histappend
 
 if [ -e /home/paul/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then
     source /home/paul/.nix-profile/etc/profile.d/hm-session-vars.sh
-elif [ -e /home/paul/.nix-profile/etc/profile.d/nix.sh ]; then
+fi
+
+if [ -e /home/paul/.nix-profile/etc/profile.d/nix.sh ]; then
     source /home/paul/.nix-profile/etc/profile.d/nix.sh
 fi
 
