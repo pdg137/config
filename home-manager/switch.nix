@@ -28,7 +28,6 @@ let
   make-script = file:
     pkgs.writeShellScript "switch" ''
       read -p "Press enter to switch configuration to ${file}..."
-      export NIX_PATH="nixpkgs=${nixpkgs}:home-manager=${home-manager}"
       export HOME_MANAGER_CONFIG="${file}"
       ${home-manager}/bin/home-manager switch'';
 
