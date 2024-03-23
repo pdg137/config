@@ -10,7 +10,25 @@ let
     hash = "sha256-cLbLPTL1CDmETVh4p0nQtvoF+FSEjsnJTFpTxhXywhQ=";
   };
 
-  home-manager = (import home-manager-src {inherit pkgs;}).home-manager;
+  # We need to do this weird thing since otherwise the source link
+  # somehow doesn't get picked up.
+  # See https://github.com/ryantm/home-manager-template/issues/9
+  src-ref-pkg = pkgs.stdenv.mkDerivation {
+    name = "source-ref-pkg";
+    src = ./.;
+    buildPhase = ''
+      mkdir $out
+      ln -s "${home-manager-src}" $out/src
+    '';
+  };
+
+  home-manager = pkgs.buildEnv {
+    name = "home-manager";
+    paths = [
+      (import home-manager-src {inherit pkgs;}).home-manager
+      src-ref-pkg
+    ];
+  };
 
   # Makes a script installed in the nix store.
   make-static-script = file:
@@ -37,4 +55,5 @@ in
     server = make-script "server.nix";
     server-static = make-static-script "server.nix";
     none = assert false; "Build with -A <type>";
+    home-manager = home-manager;
   }
