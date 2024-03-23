@@ -14,6 +14,7 @@ with {
     pkgs.ruby
     pkgs.ncurses
     pkgs.tmux
+    pkgs.ispell
     # ((import ./packages/micro.nix) pkgs)
     ((import ./my-scripts.nix) pkgs)
     (pkgs.emacs.pkgs.withPackages (epkgs: with epkgs; [
