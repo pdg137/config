@@ -17,6 +17,7 @@ with {
     pkgs.ispell
     # ((import ./packages/micro.nix) pkgs)
     ((import ./my-scripts.nix) pkgs)
+    ((import ./config-version.nix) pkgs)
     (pkgs.emacs.pkgs.withPackages (epkgs: with epkgs; [
       use-package
       nix-mode

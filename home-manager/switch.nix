@@ -45,11 +45,15 @@ let
   # edit them and run the script to switch immediately.)
   make-script = file:
     let
+      config_version = builtins.getEnv "CONFIG_VERSION";
       script = pkgs.writeText "script" ''
+        export CONFIG_VERSION="${config_version}"
+        echo "config-version: $CONFIG_VERSION"
         read -p "Press enter to switch configuration to ${file}..."
         export HOME_MANAGER_CONFIG="${file}"
         ${home-manager}/bin/home-manager switch'';
     in
+      assert config_version != ""; # Run from build.sh
       pkgs.stdenv.mkDerivation {
         name = "switch";
         src = ./.;
