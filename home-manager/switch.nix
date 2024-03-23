@@ -26,11 +26,19 @@ let
   # Makes a script referencing files in this folder (so you can
   # edit them and run the script to switch immediately.)
   make-script = file:
-    pkgs.writeShellScript "switch" ''
-      read -p "Press enter to switch configuration to ${file}..."
-      export HOME_MANAGER_CONFIG="${file}"
-      ${home-manager}/bin/home-manager switch'';
-
+    let
+      script = pkgs.writeText "script" ''
+        read -p "Press enter to switch configuration to ${file}..."
+        export HOME_MANAGER_CONFIG="${file}"
+        ${home-manager}/bin/home-manager switch'';
+    in
+      pkgs.stdenv.mkDerivation {
+        name = "switch";
+        src = ./.;
+        installPhase = ''
+          cp ${script} $out
+          chmod a+x $out'';
+      };
 in
   {
     desktop = make-script "desktop.nix";
