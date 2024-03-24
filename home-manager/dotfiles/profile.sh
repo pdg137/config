@@ -5,4 +5,4 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-echo "Config version: " `config-version`
+echo "Config version:" `config-version`
