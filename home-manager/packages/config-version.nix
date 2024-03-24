@@ -1,3 +1,6 @@
+# A simple utility to record the version of the build and make it
+# accessible at runtime.
+
 pkgs:
   let
     config_version = builtins.getEnv "CONFIG_VERSION";
