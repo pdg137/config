@@ -15,7 +15,7 @@ let
   # See https://github.com/ryantm/home-manager-template/issues/9
   src-ref-pkg = pkgs.stdenv.mkDerivation {
     name = "source-ref-pkg";
-    src = ./.;
+    dontUnpack = true;
     buildPhase = ''
       mkdir $out
       ln -s "${home-manager-src}" $out/src
@@ -35,7 +35,7 @@ let
     let
       repo = pkgs.stdenv.mkDerivation {
        name = "my-home-manager";
-       src = ./.;
+       src = pkgs.lib.cleanSource ./.;
        installPhase = "cp -r $src $out";
       };
     in
@@ -56,7 +56,7 @@ let
       assert config_version != ""; # Run from build.sh
       pkgs.stdenv.mkDerivation {
         name = "switch";
-        src = ./.;
+        dontUnpack = true;
         installPhase = ''
           cp ${script} $out
           chmod a+x $out'';

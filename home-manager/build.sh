@@ -1,2 +1,2 @@
-export CONFIG_VERSION="`git describe --always --dirty` `date`"
-nix-build switch.nix -A "$1" -o switch
+export CONFIG_VERSION="`git describe --always --dirty`"
+nix-build switch.nix $@

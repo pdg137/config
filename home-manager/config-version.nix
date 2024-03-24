@@ -4,7 +4,7 @@ pkgs:
   in
     pkgs.stdenv.mkDerivation {
       name = "config-version";
-      src = ./.;
+      dontUnpack = true;
       buildPhase = ''
         mkdir -p $out/bin
         echo "echo ${config_version}" > $out/bin/config-version
