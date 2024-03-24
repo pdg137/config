@@ -1,6 +1,10 @@
 let
   nixpkgs = <nixpkgs>;
-  pkgs = import nixpkgs {};
+  pkgs = import nixpkgs {
+    crossSystem = {
+      config = "aarch64-linux";
+    };
+  };
 
   home-manager-src = pkgs.fetchFromGitHub {
     owner = "nix-community";
