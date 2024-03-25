@@ -15,6 +15,7 @@ with {
     pkgs.ncurses
     pkgs.tmux
     pkgs.ispell
+    pkgs.nix
     # ((import ./packages/micro.nix) pkgs)
     ((import ./packages/config-version.nix) pkgs)
     ((import ./my-scripts.nix) pkgs)
