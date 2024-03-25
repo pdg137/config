@@ -1,4 +1,4 @@
-{ config, pkgs, extra-packages ? [] }:
+{ config, pkgs, extra-packages ? [], emacs ? pkgs.emacs29-nox }:
 
 with {
   # Link some dotfiles to allow editing in place.
@@ -16,10 +16,9 @@ with {
     pkgs.tmux
     pkgs.ispell
     pkgs.nix
-    # ((import ./packages/micro.nix) pkgs)
     ((import ./packages/config-version.nix) pkgs)
     ((import ./my-scripts.nix) pkgs)
-    (pkgs.emacs.pkgs.withPackages (epkgs: with epkgs; [
+    (emacs.pkgs.withPackages (epkgs: with epkgs; [
       use-package
       nix-mode
       bind-key

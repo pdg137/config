@@ -16,10 +16,6 @@
   (unbind-key key)
   )
 
-;; Indent normally
-(setq c-default-style "linux"
-      c-basic-offset 2)
-
 (use-package color-theme-sanityinc-solarized
   :config
   (load-theme 'sanityinc-solarized-dark t)
@@ -288,8 +284,11 @@
 
 (bind "C-0" 'scale-reset)
 
-(bind "C-x g" 'magit-status)
-
 ;; Misc config
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
+(delete-selection-mode t)
+(display-time-mode t)
+(show-paren-mode t)
+(setq standard-indent 2)
+(tool-bar-mode -1)

@@ -9,5 +9,8 @@ import ./home.nix {
   extra-packages = [
     pkgs.gnucash
     pkgs.nethack
+    ((import ./packages/micro.nix) pkgs)
   ];
+
+  emacs = pkgs.emacs29-pgtk;
 }

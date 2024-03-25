@@ -46,14 +46,18 @@ let
   make-script = file:
     let
       config_version = builtins.getEnv "CONFIG_VERSION";
+      export_config_version =
+        if config_version == ""
+        then ''export CONFIG_VERSION="`git describe --long --tags --always --dirty`"''
+        else ''export CONFIG_VERSION="${config_version}"'';
+
       script = pkgs.writeText "script" ''
-        export CONFIG_VERSION="${config_version}"
+        ${export_config_version}
         echo "Config version: $CONFIG_VERSION"
         read -p "Press enter to switch configuration to ${file}..."
         export HOME_MANAGER_CONFIG="${file}"
         ${home-manager}/bin/home-manager switch'';
     in
-      assert config_version != ""; # Run from build.sh
       pkgs.stdenv.mkDerivation {
         name = "switch";
         dontUnpack = true;

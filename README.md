@@ -5,7 +5,7 @@ To get started on a new server:
 1. Install nix
 2. Back up and remove your existing `.emacs.d`, `.bashrc`, and `.profile`
 3. Clone this repository and go into the `home-manager/` directory.
-4. Run `./build.sh -A desktop -o switch` or `./build.sh -A server -o switch`.
+4. Run `nix-build switch.nix -A desktop -o switch` or `nix-build switch.nix -A server -o switch`.
 5. Run `./switch`.
 
 If you

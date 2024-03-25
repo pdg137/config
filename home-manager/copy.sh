@@ -1,4 +1,5 @@
 host=$1
-result=`./build.sh -A server-static`
+export CONFIG_VERSION="`git describe --long --tags --always --dirty`"
+result=`nix-build switch.nix -A server-static`
 nix-copy-closure $host $result
 ssh $host nix-store --add-root ~/switch -r $result
