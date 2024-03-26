@@ -42,5 +42,6 @@ with {
     ".emacs.d/init.el".source = link dotfiles/init.el;
     ".emacs.d/custom_file.el".source = link dotfiles/custom_file.el;
     ".config/htop/htoprc".source = dotfiles/htoprc;
+    ".config/micro/settings.json".source = dotfiles/micro-settings.json;
   };
 }
