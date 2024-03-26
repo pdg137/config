@@ -12,5 +12,5 @@ import ./home.nix {
     ((import ./packages/micro.nix) pkgs)
   ];
 
-  emacs = pkgs.emacs29-pgtk;
+  emacs = pkgs.emacs;
 }

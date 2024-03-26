@@ -1,4 +1,4 @@
-{ config, pkgs, extra-packages ? [], emacs ? pkgs.emacs29-nox }:
+{ config, pkgs, extra-packages ? [], emacs ? pkgs.emacs }:
 
 with {
   # Link some dotfiles to allow editing in place.
