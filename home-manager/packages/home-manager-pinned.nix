@@ -1,5 +1,13 @@
-# I had to use this initially since the nixpkgs version did not
-# work; saved here for reference.
+# This pinned and modified version fixes two issues:
+#
+# 1. The nixos-23.11 version of home-manager was incompatible with
+#    nixos-23.11 (fixed in nixpkgs 3173aee).
+#
+# 2. The source reference was not registered, causing GC to break my
+#    home-manager install (fixed in 996a748, not yet merged).
+#
+# When these issues are resolved perhaps we can stop pinning
+# home-manager.
 
 pkgs:
 let

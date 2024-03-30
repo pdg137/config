@@ -1,6 +1,7 @@
 let
   nixpkgs = <nixpkgs>;
   pkgs = import nixpkgs {};
+  home-manager = import packages/home-manager-pinned.nix pkgs;
 
   # Makes a script installed in the nix store.
   make-static-script = file:
@@ -28,7 +29,7 @@ let
         echo "Config version: $CONFIG_VERSION"
         read -p "Press enter to switch configuration to ${file}..."
         export HOME_MANAGER_CONFIG="${file}"
-        ${pkgs.home-manager}/bin/home-manager switch'';
+        ${home-manager}/bin/home-manager switch'';
     in
       pkgs.stdenv.mkDerivation {
         name = "switch";
