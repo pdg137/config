@@ -30,7 +30,6 @@ with {
       ergoemacs-mode
       bash-completion
       clipetty
-      python-mode
     ]))
   ] ++ extra-packages;
 

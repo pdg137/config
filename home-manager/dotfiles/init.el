@@ -47,8 +47,6 @@
   (global-set-key (kbd "M-S-[") #'er/contract-region)
   )
 
-(use-package python-mode)
-
 ;; Find file at point
 (ffap-bindings)
 
