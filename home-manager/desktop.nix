@@ -9,6 +9,7 @@ import ./home.nix {
   extra-packages = [
     pkgs.gnucash
     pkgs.nethack
+    pkgs.alacritty
     ((import ./packages/micro.nix) pkgs)
   ];
 

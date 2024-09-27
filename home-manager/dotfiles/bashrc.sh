@@ -34,7 +34,8 @@ if [ -e ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then
     unset NIX_LINK NIX_LINK_NEW
 fi
 
-if [[ $TERM == "xterm-256color" ]]; then
+if [[ $TERM == "xterm-256color" ||
+    $TERM == "alacritty" ]]; then
     (infocmp xterm-direct > /dev/null 2>&1) && export TERM=xterm-direct
 fi
 
