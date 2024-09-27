@@ -1,7 +1,7 @@
 let
   nixpkgs = <nixpkgs>;
   pkgs = import nixpkgs {};
-  home-manager = import packages/home-manager-pinned.nix pkgs;
+  home-manager = import packages/home-manager.nix pkgs;
 
   # Makes a script installed in the nix store.
   make-static-script = file:
