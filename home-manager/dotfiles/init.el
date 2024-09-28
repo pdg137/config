@@ -95,6 +95,13 @@
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
+;; Emoji 😊 and special characters
+(set-fontset-font
+    t 'symbol (font-spec :family "Noto Color Emoji") nil 'prepend)
+(setq emojify-display-style 'unicode)
+(setq emojify-emoji-styles '(unicode))
+; note: C-X 8 RET runs insert char
+
 ;; Put backups in a better place
 (setq
  backup-by-copying t      ; don't clobber symlinks

@@ -10,7 +10,12 @@ import ./home.nix {
     pkgs.gnucash
     pkgs.nethack
     ((import ./packages/micro.nix) pkgs)
+    pkgs.noto-fonts-emoji
+    pkgs.source-code-pro
+    pkgs.font-manager
   ];
 
   emacs = pkgs.emacs;
+
+  enable_fontconfig = true;
 }
