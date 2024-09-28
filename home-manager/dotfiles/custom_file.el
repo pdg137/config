@@ -19,9 +19,7 @@
  '(global-whitespace-mode t)
  '(indent-tabs-mode nil)
  '(initial-scratch-message
-   ";; This buffer is for notes you don't want to save, and for Lisp evaluation.
-;; If you want to create a file, visit that file with 【Ctrl+O】,
-;; then enter the text in that file's own buffer.")
+   ";; This buffer is for notes you don't want to save, and for Lisp evaluation.\12;; If you want to create a file, visit that file with 【Ctrl+O】,\12;; then enter the text in that file's own buffer.")
  '(recentf-menu-before "Close")
  '(recentf-mode t)
  '(uniquify-buffer-name-style 'post-forward nil (uniquify))
@@ -33,7 +31,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#002b36" :foreground "#839496" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 135 :width normal :foundry "ADBE" :family "Source Code Pro"))))
+ '(default ((t (:inherit nil :extend nil :stipple nil :background "#002b36" :foreground "#839496" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight semi-bold :height 135 :width normal :family "Source Code Pro"))))
  '(ansi-color-black ((t (:background "#002b36" :foreground "#002b36"))))
  '(ansi-color-blue ((t (:background "#6c71c4" :foreground "#6c71c4"))))
  '(ansi-color-bright-black ((t (:background "#073642" :foreground "#073642"))))
@@ -55,4 +53,6 @@
  '(cursor ((t (:background "violet red"))))
  '(lazy-highlight ((t (:background "#2aa198" :foreground "#073642"))))
  '(line-number ((t (:foreground "#2f525b"))))
- '(line-number-current-line ((t (:inherit default :foreground "#586e75")))))
+ '(line-number-current-line ((t (:inherit default :foreground "#586e75"))))
+ '(mode-line ((t (:background "#073642" :foreground "#93a1a1" :box nil :weight semi-bold))))
+ '(mode-line-inactive ((t (:weight normal :box nil :foreground "#586e75" :background "#073642" :inherit mode-line)))))
