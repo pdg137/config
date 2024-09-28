@@ -15,7 +15,7 @@ import ./home.nix {
     pkgs.font-manager
   ];
 
-  emacs = pkgs.emacs;
+  emacs = pkgs.emacs29-pgtk;
 
   enable_fontconfig = true;
 }
