@@ -12,6 +12,7 @@ with {
 
   home.packages = [
     pkgs.ruby
+    pkgs.python3
     pkgs.ncurses
     pkgs.tmux
     pkgs.ispell
