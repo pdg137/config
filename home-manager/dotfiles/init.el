@@ -299,3 +299,5 @@
 (show-paren-mode t)
 (setq standard-indent 2)
 (tool-bar-mode -1)
+(setq visible-bell t)
+(server-start)
