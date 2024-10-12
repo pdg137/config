@@ -9,6 +9,7 @@ import ./home.nix {
   extra-packages = [
     pkgs.gnucash
     pkgs.nethack
+    pkgs.bsdgames
     ((import ./packages/micro.nix) pkgs)
     pkgs.noto-fonts-emoji
     pkgs.source-code-pro
