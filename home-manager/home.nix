@@ -1,4 +1,4 @@
-{ config, pkgs, extra-packages ? [], emacs ? pkgs.emacs }:
+{ config, pkgs, extra-packages ? [], emacs ? pkgs.emacs, enable_fontconfig ? false }:
 
 with {
   # Link some dotfiles to allow editing in place.
@@ -12,6 +12,7 @@ with {
 
   home.packages = [
     pkgs.ruby
+    pkgs.python3
     pkgs.ncurses
     pkgs.tmux
     pkgs.ispell
@@ -44,4 +45,6 @@ with {
     ".config/htop/htoprc".source = dotfiles/htoprc;
     ".config/micro/settings.json".source = dotfiles/micro-settings.json;
   };
+
+  fonts.fontconfig.enable = enable_fontconfig;
 }
