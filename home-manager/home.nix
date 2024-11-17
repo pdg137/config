@@ -22,13 +22,6 @@ with {
     (emacs.pkgs.withPackages (epkgs: with epkgs; [
       use-package
       nix-mode
-      bind-key
-      color-theme-sanityinc-solarized
-      multiple-cursors
-      expand-region
-      wgrep
-      markdown-mode
-      ergoemacs-mode
       bash-completion
       clipetty
     ]))
