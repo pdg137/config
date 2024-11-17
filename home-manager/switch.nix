@@ -1,5 +1,12 @@
 let
-  nixpkgs = <nixpkgs>;
+  # Change to this if you want to use your configured channel
+  #  nixpkgs = <nixpkgs>;
+
+  # Otherwise, use nixos-24.05 from 2024-09-29:
+  nixpkgs = fetchTarball {
+    url = "https://github.com/NixOS/nixpkgs/archive/fbca5e7.tar.gz";
+    sha256 = "07wa6y7q4ql0x1jj08dignak2lra003inf2cxl4xxvyqdsspshp3";
+  };
   pkgs = import nixpkgs {};
   home-manager = import packages/home-manager.nix pkgs;
 
