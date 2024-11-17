@@ -46,5 +46,10 @@ with {
     ".config/micro/settings.json".source = dotfiles/micro-settings.json;
   };
 
+  # This seems silly. Is there a better way to get NIX_PATH set?
+  home.sessionVariables = {
+    NIX_PATH = builtins.getEnv "NIX_PATH";
+  };
+
   fonts.fontconfig.enable = enable_fontconfig;
 }
