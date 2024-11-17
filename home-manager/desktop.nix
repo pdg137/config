@@ -10,6 +10,7 @@ import ./home.nix {
     pkgs.gnucash
     pkgs.nethack
     pkgs.bsdgames
+    pkgs.alacritty
     ((import ./packages/micro.nix) pkgs)
     pkgs.noto-fonts-emoji
     pkgs.source-code-pro
