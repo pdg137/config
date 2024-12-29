@@ -2,14 +2,14 @@ let
   # Change to this if you want to use your configured channel
   #  nixpkgs = <nixpkgs>;
 
-  # Otherwise, use nixos-24.05 from 2024-09-29:
+  # Otherwise, use nixos-24.11 from 2024-12-29:
   nixpkgs = fetchTarball {
     name = "nixpkgs";
-    url = "https://github.com/NixOS/nixpkgs/archive/fbca5e7.tar.gz";
-    sha256 = "07wa6y7q4ql0x1jj08dignak2lra003inf2cxl4xxvyqdsspshp3";
+    url = "https://github.com/NixOS/nixpkgs/archive/d49da4c0.tar.gz";
+    sha256 = "02g0ivn1nd8kpzrfc4lpzjbrcixi3p8iysshnrdy46pnwnjmf1rj";
   };
   pkgs = import nixpkgs {};
-  home-manager = import packages/home-manager.nix pkgs;
+  home-manager = pkgs.home-manager;
 
   # Makes a script installed in the nix store.
   make-static-script = file:
