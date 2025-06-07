@@ -14,6 +14,7 @@ with {
     pkgs.ruby
     pkgs.python3
     pkgs.ncurses
+    pkgs.less # much newer than Ubuntu version; supports my terminals
     pkgs.tmux
     pkgs.ispell
     pkgs.nix

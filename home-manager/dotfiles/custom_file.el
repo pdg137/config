@@ -20,6 +20,7 @@
  '(indent-tabs-mode nil)
  '(initial-scratch-message
    ";; This buffer is for notes you don't want to save, and for Lisp evaluation.\12;; If you want to create a file, visit that file with 【Ctrl+O】,\12;; then enter the text in that file's own buffer.")
+ '(markdown-max-image-size '(1200 . 1200))
  '(recentf-menu-before "Close")
  '(recentf-mode t)
  '(uniquify-buffer-name-style 'post-forward nil (uniquify))
