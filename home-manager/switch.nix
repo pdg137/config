@@ -33,6 +33,20 @@ let
         else ''export CONFIG_VERSION="${config_version}"'';
 
       script = pkgs.writeText "script" ''
+        case $1 in
+          update)
+            mode=`basename ${file} .nix`
+            read -p "Press enter to update $0 in $mode mode..."
+            set -x
+            nix-build switch.nix -A $mode -o $0
+            exit;;
+          "")
+            ;;
+          *)
+            echo "Usage: $0 [update]"
+            exit 1;;
+        esac
+
         ${export_config_version}
         echo "Config version: $CONFIG_VERSION"
         read -p "Press enter to switch configuration to ${file}..."
