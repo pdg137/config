@@ -39,7 +39,8 @@ let
             read -p "Press enter to update $0 in $mode mode..."
             set -x
             nix-build switch.nix -A $mode -o $0
-            exit;;
+            { set +x; } 2>/dev/null
+            ;;
           "")
             ;;
           *)
