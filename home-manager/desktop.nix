@@ -7,11 +7,13 @@ import ./home.nix {
   # Add extra packages that we want on a desktop but not
   # on servers.  Graphical applications, games, etc.
   extra-packages = [
+    pkgs.anki
     pkgs.gnucash
     pkgs.nethack
     pkgs.bsdgames
     pkgs.alacritty
     ((import ./packages/micro.nix) pkgs)
+    pkgs.noto-fonts-cjk-sans
     pkgs.noto-fonts-emoji
     pkgs.source-code-pro
     pkgs.font-manager

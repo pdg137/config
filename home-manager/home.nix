@@ -46,6 +46,7 @@ with {
     ".emacs.d/custom_file.el".source = link dotfiles/custom_file.el;
     ".config/htop/htoprc".source = dotfiles/htoprc;
     ".config/micro/settings.json".source = dotfiles/micro-settings.json;
+    ".local/share/Anki2/gldriver6".source = dotfiles/anki-gldriver6;
   };
 
   # This seems silly. Is there a better way to get NIX_PATH set?
