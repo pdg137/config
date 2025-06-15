@@ -1,0 +1,20 @@
+#!/bin/env bash
+
+myappdir=$HOME'/.local/share/applications'
+#myappdir=$HOME'/.nix-profile/share/applications'
+
+removable=`find /usr/share/applications -name '*.desktop' -type l -lname $myappdir/\*`
+
+if [ -n "$removable" ]; then
+   echo $removable
+   read -p "Press enter to remove these desktop files..."
+   find /usr/share/applications -name '*.desktop' -type l -lname $myappdir/\* -print0 | sudo xargs --null rm
+fi
+
+addable=`find $myappdir -name '*.desktop' -lname /nix/store/\*`
+
+if [ -n "$addable" ]; then
+    echo $addable
+    read -p "Press enter to link these desktop files..."
+    find $myappdir -name '*.desktop' -lname /nix/store/\* -print0 | sudo xargs --null ln -s -t /usr/share/applications
+fi
