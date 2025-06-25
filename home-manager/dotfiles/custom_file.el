@@ -3,6 +3,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" default))
  '(ergoemacs-ctl-c-or-ctl-x-delay 0.2)
  '(ergoemacs-default-cursor-color "violet red")
  '(ergoemacs-handle-ctl-c-or-ctl-x 'both)
