@@ -1,4 +1,6 @@
-{ config, pkgs, extra-packages ? [], emacs ? pkgs.emacs, enable_fontconfig ? false }:
+{ config, pkgs, extra-packages ? [],
+  extra-files ? [],
+  emacs ? pkgs.emacs, enable_fontconfig ? false }:
 
 with {
   # Link some dotfiles to allow editing in place.
@@ -14,6 +16,8 @@ with {
     pkgs.ruby
     pkgs.python3
     pkgs.ncurses
+    pkgs.less # much newer than Ubuntu version; supports my terminals
+    pkgs.git # again for terminal support
     pkgs.tmux
     pkgs.ispell
     pkgs.nix
@@ -44,7 +48,8 @@ with {
     ".emacs.d/custom_file.el".source = link dotfiles/custom_file.el;
     ".config/htop/htoprc".source = dotfiles/htoprc;
     ".config/micro/settings.json".source = dotfiles/micro-settings.json;
-  };
+    ".local/share/Anki2/gldriver6".source = dotfiles/anki-gldriver6;
+  } // extra-files;
 
   # This seems silly. Is there a better way to get NIX_PATH set?
   home.sessionVariables = {
