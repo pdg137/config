@@ -1,5 +1,5 @@
 { config, pkgs, extra-packages ? [],
-  extra-files ? [],
+  extra-files ? {},
   emacs ? pkgs.emacs, enable_fontconfig ? false }:
 
 with {
