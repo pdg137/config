@@ -32,7 +32,8 @@ with {
       multiple-cursors
       expand-region
       wgrep
-      markdown-mode
+      # this seems to stall compilation forever on my server
+      # markdown-mode
       ergoemacs-mode
       bash-completion
       clipetty
