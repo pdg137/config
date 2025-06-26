@@ -14,7 +14,7 @@ with {
 
   home.packages = [
     pkgs.ruby
-    pkgs.python3
+    # pkgs.python3 # python doesn't really work in nix
     pkgs.ncurses
     pkgs.less # much newer than Ubuntu version; supports my terminals
     pkgs.git # again for terminal support
