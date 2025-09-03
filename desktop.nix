@@ -49,6 +49,6 @@ import ./home.nix {
     ".local/share/applications/gnucash.desktop".source =
       makeDesktopFile "Gnucash" "${pkgs.gnucash}/bin/gnucash";
     ".local/share/applications/pterm.desktop".source =
-      makeDesktopFile "Plato Terminal (pterm)" "${pkgs.pterm}/bin/pterm";
+      makeDesktopFile "PTerm" "${pkgs.pterm}/bin/pterm";
   };
 }

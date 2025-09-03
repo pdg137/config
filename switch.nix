@@ -5,8 +5,8 @@ let
   # Otherwise, use nixos-25.05 from 2025-05-29:
   nixpkgs = fetchTarball {
     name = "nixpkgs";
-    url = "https://github.com/NixOS/nixpkgs/archive/7848cd8.tar.gz";
-    sha256 = "0lscn3m2z2zs29k17c8901cpfgv6j4rrac1bpmslycr6mz8i64wb";
+    url = "https://github.com/NixOS/nixpkgs/archive/7c815e5.tar.gz";
+    sha256 = "0nysdk5i3arc88k5ibx3rgl0ihd7km52hr61l8qx280nf7sjf6zm";
   };
   pkgs = import nixpkgs {};
   home-manager = pkgs.home-manager;
@@ -37,10 +37,9 @@ let
           update)
             mode=`basename ${file} .nix`
             read -p "Press enter to update $0 in $mode mode..."
-            set -x
+            set -ex
             nix-build switch.nix -A $mode -o $0
-            { set +x; } 2>/dev/null
-            ;;
+            exit 0;;
           "")
             ;;
           *)
