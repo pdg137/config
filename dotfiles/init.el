@@ -139,6 +139,15 @@
   (set-variable 'bash-completion-use-separate-processes t)
   )
 
+;; Makes more program work in the shell
+(use-package coterm
+  :config
+  (coterm-mode)
+  (setq coterm-auto-char-mode t)
+  (with-eval-after-load 'comint
+    (define-key comint-mode-map (kbd "C-;") #'coterm-char-mode-cycle))
+  )
+
 ;; General key bindings
 (bind-keys :map ergoemacs-user-keymap
            :prefix-map split-window-map

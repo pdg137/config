@@ -37,6 +37,7 @@ with {
       ergoemacs-mode
       bash-completion
       clipetty
+      coterm
     ]))
   ] ++ extra-packages;
 
