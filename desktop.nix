@@ -30,6 +30,7 @@ import ./home.nix {
     pkgs.source-code-pro
     pkgs.font-manager
     pkgs.xorg.xeyes
+    pkgs.pterm
   ];
 
   # emacs29-pgtk (Wayland) has problems with clipboard access
@@ -47,5 +48,7 @@ import ./home.nix {
       makeDesktopFile "Emacs client" "${pkgs.emacs}/bin/emacsclient -c";
     ".local/share/applications/gnucash.desktop".source =
       makeDesktopFile "Gnucash" "${pkgs.gnucash}/bin/gnucash";
+    ".local/share/applications/pterm.desktop".source =
+      makeDesktopFile "PTerm" "${pkgs.pterm}/bin/pterm";
   };
 }

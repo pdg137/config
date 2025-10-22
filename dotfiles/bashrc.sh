@@ -66,14 +66,15 @@ if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
 fi
 unset env
 
-export EDITOR=emacs
+export EDITOR="emacsclient -c"
 export GIT_MERGE_AUTOEDIT=no
 export MICRO_TRUECOLOR=1
+export PAGER=less
 
-case "$INSIDE_EMACS" in
-    *,comint)
-        export TERM=ansi
-        export PAGER=
-        export EDITOR=
-        ;;
-esac
+#case "$INSIDE_EMACS" in
+#    *,comint)
+#        export TERM=ansi
+#        export PAGER=
+#        export EDITOR=
+#        ;;
+#esac

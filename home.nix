@@ -1,5 +1,5 @@
 { config, pkgs, extra-packages ? [],
-  extra-files ? [],
+  extra-files ? {},
   emacs ? pkgs.emacs, enable_fontconfig ? false }:
 
 with {
@@ -22,6 +22,7 @@ with {
     pkgs.ispell
     pkgs.nix
     ((import ./packages/config-version.nix) pkgs)
+    ((import ./packages/tenuki.nix) pkgs)
     ((import ./my-scripts.nix) pkgs)
     (emacs.pkgs.withPackages (epkgs: with epkgs; [
       use-package
@@ -31,10 +32,12 @@ with {
       multiple-cursors
       expand-region
       wgrep
-      markdown-mode
+      # this seems to stall compilation forever on my server
+      # markdown-mode
       ergoemacs-mode
       bash-completion
       clipetty
+      coterm
     ]))
   ] ++ extra-packages;
 
