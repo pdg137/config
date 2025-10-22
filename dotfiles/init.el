@@ -300,6 +300,7 @@
 (setq standard-indent 2)
 (setq-default css-indent-offset 4)
 (setq css-indent-offset 2)
+(setq js-indent-level 2)
 (tool-bar-mode -1)
 (setq visible-bell t)
 (server-start)
