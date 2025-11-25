@@ -21,6 +21,7 @@ with {
     pkgs.tmux
     pkgs.ispell
     pkgs.nix
+    pkgs.oath-toolkit
     ((import ./packages/config-version.nix) pkgs)
     ((import ./packages/tenuki.nix) pkgs)
     ((import ./my-scripts.nix) pkgs)
@@ -60,4 +61,7 @@ with {
   };
 
   fonts.fontconfig.enable = enable_fontconfig;
+
+  # Possibly required for some things like uv to magically work
+  # home.programs.nix-ld.enable = true;
 }

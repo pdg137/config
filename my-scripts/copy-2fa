@@ -1,0 +1,2 @@
+code=$(oathtool --totp --base32 `head -1 ~/.google_authenticator`)
+printf $'\e]52;c;%s\a' "$(base64 <<<$code)"
