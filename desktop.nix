@@ -26,7 +26,7 @@ import ./home.nix {
     pkgs.bsdgames
     ((import ./packages/micro.nix) pkgs)
     pkgs.noto-fonts-cjk-sans
-    pkgs.noto-fonts-emoji
+    pkgs.noto-fonts-color-emoji
     pkgs.source-code-pro
     pkgs.font-manager
     pkgs.xorg.xeyes

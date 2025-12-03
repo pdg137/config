@@ -39,6 +39,7 @@ with {
       bash-completion
       clipetty
       coterm
+      php-mode
     ]))
   ] ++ extra-packages;
 
