@@ -40,6 +40,7 @@ with {
       clipetty
       coterm
       php-mode
+      basic-mode
     ]))
   ] ++ extra-packages;
 
