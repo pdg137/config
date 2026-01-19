@@ -40,6 +40,7 @@ with {
       clipetty
       coterm
       php-mode
+      graphviz-dot-mode
     ]))
   ] ++ extra-packages;
 

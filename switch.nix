@@ -3,10 +3,11 @@ let
   #  nixpkgs = <nixpkgs>;
 
   # nixos-25.11 from 2025-11-30:
+  nixpkgs-version = "d351d06";
   nixpkgs = fetchTarball {
-    name = "nixpkgs";
-    url = "https://github.com/NixOS/nixpkgs/archive/d542db7.tar.gz";
-    sha256 = "0x6wjmpzxrrlmwwq8v3znpyr1qs5m1vf9bdgwwlq0lr5fl8l4v67";
+    name = "nixpkgs-${nixpkgs-version}";
+    url = "https://github.com/NixOS/nixpkgs/archive/${nixpkgs-version}.tar.gz";
+    sha256 = "049hhh8vny7nyd26dfv7i962jpg18xb5bg6cv126b8akw5grb0dg";
   };
   pkgs = import nixpkgs {};
   home-manager = pkgs.home-manager;
