@@ -41,6 +41,7 @@ with {
       coterm
       php-mode
       graphviz-dot-mode
+      basic-mode
     ]))
   ] ++ extra-packages;
 
