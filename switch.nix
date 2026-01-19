@@ -2,7 +2,7 @@ let
   # Change to this if you want to use your configured channel
   #  nixpkgs = <nixpkgs>;
 
-  # nixos-25.11 from 2025-11-30:
+  # nixos-25.11 from 2026-01-08:
   nixpkgs-version = "d351d06";
   nixpkgs = fetchTarball {
     name = "nixpkgs-${nixpkgs-version}";
