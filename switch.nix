@@ -2,11 +2,12 @@ let
   # Change to this if you want to use your configured channel
   #  nixpkgs = <nixpkgs>;
 
-  # Otherwise, use nixos-25.05 from 2025-05-29:
+  # nixos-25.11 from 2026-01-08:
+  nixpkgs-version = "d351d06";
   nixpkgs = fetchTarball {
-    name = "nixpkgs";
-    url = "https://github.com/NixOS/nixpkgs/archive/7848cd8.tar.gz";
-    sha256 = "0lscn3m2z2zs29k17c8901cpfgv6j4rrac1bpmslycr6mz8i64wb";
+    name = "nixpkgs-${nixpkgs-version}";
+    url = "https://github.com/NixOS/nixpkgs/archive/${nixpkgs-version}.tar.gz";
+    sha256 = "049hhh8vny7nyd26dfv7i962jpg18xb5bg6cv126b8akw5grb0dg";
   };
   pkgs = import nixpkgs {};
   home-manager = pkgs.home-manager;
@@ -37,10 +38,9 @@ let
           update)
             mode=`basename ${file} .nix`
             read -p "Press enter to update $0 in $mode mode..."
-            set -x
+            set -ex
             nix-build switch.nix -A $mode -o $0
-            { set +x; } 2>/dev/null
-            ;;
+            exit 0;;
           "")
             ;;
           *)

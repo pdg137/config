@@ -21,6 +21,7 @@ with {
     pkgs.tmux
     pkgs.ispell
     pkgs.nix
+    pkgs.oath-toolkit
     ((import ./packages/config-version.nix) pkgs)
     ((import ./packages/tenuki.nix) pkgs)
     ((import ./my-scripts.nix) pkgs)
@@ -32,10 +33,15 @@ with {
       multiple-cursors
       expand-region
       wgrep
-      markdown-mode
+      # this seems to stall compilation forever on my server
+      # markdown-mode
       ergoemacs-mode
       bash-completion
       clipetty
+      coterm
+      php-mode
+      graphviz-dot-mode
+      basic-mode
     ]))
   ] ++ extra-packages;
 
@@ -58,4 +64,7 @@ with {
   };
 
   fonts.fontconfig.enable = enable_fontconfig;
+
+  # Possibly required for some things like uv to magically work
+  # home.programs.nix-ld.enable = true;
 }
