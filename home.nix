@@ -42,6 +42,7 @@ with {
       php-mode
       graphviz-dot-mode
       basic-mode
+      lua-mode
     ]))
   ] ++ extra-packages;
 
