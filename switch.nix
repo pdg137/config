@@ -3,7 +3,7 @@ let
   #  nixpkgs = <nixpkgs>;
 
   # nixos-25.11 from 2026-01-08:
-  nixpkgs-version = "d351d06";
+  nixpkgs-version = "d351d065";
   nixpkgs = fetchTarball {
     name = "nixpkgs-${nixpkgs-version}";
     url = "https://github.com/NixOS/nixpkgs/archive/${nixpkgs-version}.tar.gz";
