@@ -288,6 +288,7 @@
        (scale-to 200))
 
 (bind "C--" 'scale-down)
+(bind "C-_" 'scale-down)
 (bind "C-+" 'scale-up)
 (bind "C-=" 'scale-up)
 
