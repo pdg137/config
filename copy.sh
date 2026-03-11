@@ -1,3 +1,5 @@
+set -e
+
 host=$1
 export CONFIG_VERSION="`git describe --long --tags --always --dirty`"
 result=`nix-build switch.nix -A server-static`

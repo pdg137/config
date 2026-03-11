@@ -17,7 +17,7 @@ let
     let
       repo = pkgs.stdenv.mkDerivation {
        name = "my-home-manager";
-       src = pkgs.lib.cleanSource ./.;
+       src = pkgs.nix-gitignore.gitignoreSource [ ] ./.;
        installPhase = "cp -r $src $out";
       };
     in
