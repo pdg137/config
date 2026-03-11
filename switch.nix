@@ -1,15 +1,10 @@
 let
   # Change to this if you want to use your configured channel
-  #  nixpkgs = <nixpkgs>;
+  #   nixpkgs = <nixpkgs>; pkgs = (import nixpkgs {});
+  defs = import ./defs.nix;
+  nixpkgs = defs.nixpkgs;
+  pkgs = defs.pkgs;
 
-  # nixos-25.11 from 2026-01-08:
-  nixpkgs-version = "d351d065";
-  nixpkgs = fetchTarball {
-    name = "nixpkgs-${nixpkgs-version}";
-    url = "https://github.com/NixOS/nixpkgs/archive/${nixpkgs-version}.tar.gz";
-    sha256 = "049hhh8vny7nyd26dfv7i962jpg18xb5bg6cv126b8akw5grb0dg";
-  };
-  pkgs = import nixpkgs {};
   home-manager = pkgs.home-manager;
 
   # Makes a script installed in the nix store.
