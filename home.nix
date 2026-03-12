@@ -23,7 +23,6 @@ with {
     pkgs.nix
     pkgs.oath-toolkit
     ((import ./packages/config-version.nix) pkgs)
-    ((import ./packages/tenuki.nix) pkgs)
     ((import ./my-scripts.nix) pkgs)
     (emacs.pkgs.withPackages (epkgs: with epkgs; [
       use-package
