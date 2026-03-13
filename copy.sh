@@ -1,3 +1,7 @@
+# Usage examples:
+# ./copy.sh my-server
+# CONFIG_ARCH=aarch64-linux ./copy.sh raspberrypi
+
 set -e
 
 host=$1

@@ -32,5 +32,3 @@ rec {
   };
   mkBuildableShell = (import mkBuildableShell-src pkgs);
 }
-
-
