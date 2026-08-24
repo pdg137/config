@@ -3,10 +3,7 @@ let
   #   nixpkgs = <nixpkgs>; pkgs = (import nixpkgs {});
   defs = import ./defs.nix;
   nixpkgs = defs.nixpkgs;
-  env_config_arch = builtins.getEnv "CONFIG_ARCH";
-  pkgs = if env_config_arch != ""
-         then import nixpkgs { system = env_config_arch; }
-         else import nixpkgs { };
+  pkgs = defs.pkgs;
 
   home-manager = pkgs.home-manager;
 

@@ -15,12 +15,12 @@ rec {
       inherit sha256;
     };
 
-  # nixos-26.05 from 2026-06-03:
+  # nixos-26.05 from 2026-08-18:
   nixpkgs = pinTarballGithub {
-    version = "b51242d";
+    version = "c69ae8fb";
     owner = "NixOS";
     name = "nixpkgs";
-    sha256 = "0ldd02kkfzndk0x98zsg992gqz84ip18hvrq01wws6p96ki176rb";
+    sha256 = "154hjpb1kxgjarn7p9xpprrf2isbswdd2ipnkk2dfsl42zzxa2cn";
   };
   pkgs = (import nixpkgs {});
 

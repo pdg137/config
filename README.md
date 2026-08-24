@@ -1,4 +1,4 @@
-My home-manager-based config.
+# My home-manager-based config.
 
 To get started on a new server:
 
@@ -20,3 +20,22 @@ repository there:
 1. Add yourself to trusted-users in nix.conf on the server.
 2. Run `./copy.sh <hostname>`.
 3. Log into the server and run `./switch`.
+
+# Using defs.nix for other things
+
+```nix
+let
+  mynix = import (fetchTarball {
+      url = "https://github.com/pdg137/config/archive/master.tar.gz";
+      sha256 = ""; # update as necessary
+  } + "/defs.nix");
+  pkgs = mynix.pkgs;
+in
+
+mynix.mkBuildableShell {
+  name = "shell";
+  buildInputs = [
+    # put packages here
+  ];
+}
+```
